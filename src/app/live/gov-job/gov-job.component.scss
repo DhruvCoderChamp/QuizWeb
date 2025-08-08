@@ -1,0 +1,115 @@
+.jobs-grid-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start; /* Left aligned rows (can use center if you prefer) */
+  padding: 2rem 1rem;
+}
+
+.job-card {
+  flex: 0 0 370px;        /* Fixed width for all cards */
+  max-width: 370px;
+  min-width: 370px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 22px rgba(24,48,85,0.11);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.4rem 1.2rem 1.4rem;
+  margin: 0;
+  transition: box-shadow 0.18s, transform 0.15s;
+}
+
+.job-card:hover {
+  box-shadow: 0 12px 36px rgba(24,48,85,0.16), 0 1.5px 6px rgba(24,48,85,0.11);
+  transform: translateY(-3px) scale(1.012);
+}
+
+.job-card-header {
+  font-size: 1.28em;
+  font-weight: 700;
+  color: #21416a;
+  margin-bottom: 5px;
+}
+
+.job-card-title {
+  color: #1976d2;
+  font-weight: 700;
+  font-size: 1.16em;
+  margin-bottom: 0.8em;
+  line-height: 1.22;
+  text-decoration: none;
+  display: inline-block;
+}
+.job-card-title:hover { text-decoration: underline; }
+
+.job-card-positions,
+.job-card-location,
+.job-card-date {
+  font-size: 1.03em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.55em;
+}
+.job-card-positions strong { margin-left: 5px; margin-right: 1px; }
+
+.job-icon {
+  min-width: 20px;
+  margin-right: 0.55em;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 1px;
+}
+
+.job-card-eligibility-label {
+  font-size: 1em;
+  margin-bottom: 0.16em;
+  color: #2377c6;
+  font-weight: 600;
+}
+.job-card-eligibility {
+  margin-bottom: 1em;
+}
+.pill {
+  background: #eef6fd;
+  color: #1760a7;
+  border-radius: 14px;
+  font-weight: 600;
+  display: inline-block;
+  font-size: 1em;
+  padding: 3.5px 14px 4px 14px;
+  margin: 0 9px 6px 0;
+  border: 1px solid #bcd7f8;
+}
+
+.job-card-location { color: #296bcc; margin-bottom: 0.68em; }
+.job-card-date {
+  margin-top: auto;
+  color: #ea473c;
+  font-weight: 600;
+  font-size: 1.03em;
+}
+.date-label { color: #b32721; margin-right: 3px; }
+
+@media (max-width: 1200px) {
+  .jobs-grid-container { gap: 1.2rem; }
+  .job-card {
+    flex: 0 0 310px;
+    max-width: 310px;
+    min-width: 310px;
+    padding: 1.4rem 1rem 1rem 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .jobs-grid-container {
+    justify-content: center;
+    gap: 0.7rem;
+  }
+  .job-card {
+    flex: 0 0 95vw;
+    min-width: 0;
+    max-width: 98vw;
+  }
+}

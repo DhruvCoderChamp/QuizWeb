@@ -1,0 +1,43 @@
+<div class="admin-dashboard-container">
+  <!-- Sidebar with Category Filters -->
+  <div class="sidebar">
+    <h3>📁 Categories</h3>
+    <button 
+      *ngFor="let category of categories" 
+      (click)="selectCategory(category.id)" 
+      [class.active]="category.id === selectedCategoryId">
+      {{ category.name }}
+    </button>
+  </div>
+
+  <!-- Main Section: Test Cards -->
+  <div class="test-section">
+    <h2 *ngIf="selectedCategoryName">Tests in "{{ selectedCategoryName }}"</h2>
+    <h2 *ngIf="!selectedCategoryName">All Tests</h2>
+
+    <div *ngIf="isLoading" class="loading">Loading tests...</div>
+
+    <div class="test-grid" *ngIf="!isLoading && tests.length > 0">
+      <mat-card class="test-card" *ngFor="let test of tests">
+        <mat-card-header>
+          <mat-card-title>{{ test.title }}</mat-card-title>
+          <mat-card-subtitle>{{ test.description }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p><strong>⏱ Duration:</strong> {{ test.time }} mins</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-stroked-button color="primary" (click)="viewTest(test.id)">👁 View</button>
+          <button mat-stroked-button color="accent" (click)="addQuestions(test.id)">➕ Add Qs</button>
+          <button mat-stroked-button color="warn" (click)="deleteTest(test.id)">🗑 Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <p *ngIf="!isLoading && tests.length === 0" class="no-tests-msg">
+      No tests found for this category.
+    </p>
+  </div>
+</div>

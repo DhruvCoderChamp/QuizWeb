@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Government Jobs Management</h1>
+
+  <!-- Show only Add button and Refresh when form is hidden -->
+  <div *ngIf="!formVisible" class="top-buttons">
+    <button class="btn add-btn" (click)="showAddForm()">Add Job</button>
+    <button class="btn refresh-btn" (click)="loadJobs()">Refresh List</button>
+  </div>
+
+  <!-- Job List (hidden when form is visible) -->
+  <ul *ngIf="!formVisible" class="job-list">
+    <li *ngFor="let job of jobs" class="job-item">
+      <div class="job-info">
+        <div><strong>Job Name:</strong> {{ job.jobName }}</div>
+        <div><strong>Job Title:</strong> {{ job.jobTitle }}</div>
+        <div><strong>Job Link:</strong> {{ job.jobLink }}</div>
+        <div><strong>Count:</strong> {{ job.jobCount }}</div>
+        <div><strong>Eligibility:</strong> {{ job.eligibility.join(', ') }}</div>
+        <div><strong>Last Date:</strong> {{ job.lastDate | date:'yyyy-MM-dd' }}</div>
+      </div>
+      <div class="job-actions">
+        <button class="btn edit-btn" (click)="showEditForm(job)">Edit</button>
+        <button class="btn delete-btn" (click)="deleteJob(job.id!)">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Add/Edit Form -->
+  <div *ngIf="formVisible" class="form-container">
+    <h2>{{ editing ? 'Edit Job' : 'Add New Job' }}</h2>
+    <form #jobForm="ngForm" (ngSubmit)="editing ? updateJob() : createJob()">
+      <label>
+        Job Name:
+        <input [(ngModel)]="formJob.jobName" name="jobName" required autocomplete="off" />
+      </label>
+
+      <label>
+        Job Title:
+        <input [(ngModel)]="formJob.jobTitle" name="jobTitle" required autocomplete="off" />
+      </label>
+
+      <label>
+        Job Link:
+        <input [(ngModel)]="formJob.jobLink" name="jobLink" required autocomplete="off" />
+      </label>
+
+      <label>
+        Job Count:
+        <input type="number" [(ngModel)]="formJob.jobCount" name="jobCount" min="0" required autocomplete="off" />
+      </label>
+
+      <label>
+        Eligibility (comma separated):
+        <input
+          type="text"
+          [(ngModel)]="formJob.eligibilityString"
+          name="eligibility"
+          (ngModelChange)="onEligibilityInput($event)"
+          required
+          autocomplete="off"
+        />
+      </label>
+
+      <label>
+        Last Date:
+        <input type="date" [(ngModel)]="formJob.lastDate" name="lastDate" required autocomplete="off" />
+      </label>
+
+      <div class="form-buttons">
+        <button class="btn submit-btn" type="submit" [disabled]="jobForm.invalid">
+          {{ editing ? 'Update Job' : 'Add Job' }}
+        </button>
+        <button class="btn cancel-btn" type="button" (click)="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

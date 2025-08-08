@@ -1,0 +1,13 @@
+<div class="user-dashboard-container">
+  <h2 class="dashboard-title">🧠 Choose a Quiz Category</h2>
+
+  <div class="category-grid">
+    <div class="category-card" *ngFor="let category of categories" (click)="navigateToCategory(category.id, category.name)">
+      <img [src]="'assets/images/' + category.imageUrl" alt="{{category.name}}" class="category-img">
+      <div class="category-info">
+        <h3>{{ category.name }}</h3>
+        <p>Explore quizzes under this topic</p>
+      </div>
+    </div>
+  </div>
+</div>

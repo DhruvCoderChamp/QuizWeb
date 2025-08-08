@@ -1,0 +1,115 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-page-split {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.login-image-half {
+  flex: 1.1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #e0e5f7 0%, #f7faff 100%);
+}
+
+.login-image-half img {
+  width: 75%;
+  max-width: 450px;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(34, 34, 80, 0.08);
+}
+
+.login-form-half {
+  flex: 1.3 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(133deg, #f2f3f7 50%, #e9edfc 100%);
+  position: relative;
+}
+
+.login-glass-form {
+  background: rgba(255,255,255,0.83);
+  box-shadow: 0 8px 32px rgba(34, 48, 125, 0.12);
+  border-radius: 16px;
+  backdrop-filter: blur(3px);
+  padding: 2.8rem 2rem 2.2rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-glass-form h2 {
+  color: #282f4d;
+  font-size: 2.15rem;
+  margin-bottom: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.signup-link {
+  margin-top: 1.1rem;
+  text-align: center;
+  font-size: 1.04rem;
+  color: #3d4769;
+}
+.signup-link a {
+  color: #0071e3;
+  font-weight: 600;
+  text-decoration: none;
+}
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .login-page-split {
+    flex-direction: column;
+  }
+  .login-image-half {
+    min-height: 170px;
+    max-height: 200px;
+    justify-content: center;
+  }
+  .login-image-half img {
+    margin: 2rem 0 1rem 0;
+    max-width: 230px;
+    width: 60%;
+  }
+  .login-form-half {
+    min-height: 350px;
+    padding: 2rem 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-page-split {
+    flex-direction: column;
+  }
+  .login-image-half {
+    display: none;
+  }
+  .login-form-half {
+    padding: 1.3rem 0;
+  }
+  .login-glass-form {
+    min-width: 0;
+    max-width: 97vw;
+    padding: 2rem 0.7rem;
+  }
+}

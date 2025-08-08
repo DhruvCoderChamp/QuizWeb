@@ -1,0 +1,94 @@
+<div class="home-container">
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <img src="assets/home banner.png" alt="Home Banner" class="banner-img" />
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Government Exam Guide</h1>
+      <p>Start Your Journey With Free Videos, Test Series, Quizzes, Notes & More</p>
+      <button mat-raised-button color="accent" routerLink="/register">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Upcoming Exams -->
+  <section class="exam-highlights section-card">
+    <h2>Upcoming Exams</h2>
+    <div class="exam-grid">
+      <div class="exam-card">
+        <strong>UPPSC</strong>
+        <span>Exam Date: 2nd July 2025</span>
+      </div>
+      <div class="exam-card">
+        <strong>TNPSC Group IV</strong>
+        <span>Exam Date: 12th July 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Pass -->
+  <section class="free-pass section-card">
+    <div class="pass-content">
+      <img src="assets/Free Pass.png" alt="Free Pass" class="pass-img" />
+      <div class="features">
+        <h2>Get Access to Unlimited Tests — Absolutely Free!</h2>
+        <ul>
+          <li>500+ Exams</li>
+          <li>50,000+ Mock Tests</li>
+          <li>10,000+ Prev Year Papers</li>
+          <li>Unlimited Reattempts</li>
+          <li>Live Tests / Quizzes</li>
+        </ul>
+        <button mat-stroked-button color="accent">Unlock Free Access</button>
+      </div>
+    </div>
+  </section>
+
+<div class="features-wrapper">
+  <div class="features-header">
+    <svg class="header-icon" viewBox="0 0 24 24">
+      <path d="M4 4h16v2H4V4zm0 4h12v2H4V8zm0 4h16v2H4v-2zm0 4h12v2H4v-2z"/>
+    </svg>
+    <h2>Key Features</h2>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-item">
+      <h3>Most Updated Questions</h3>
+      <p>Get the latest and most important aptitude questions for Bank, SSC, and Railways exams.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Quality Explanation</h3>
+      <p>Access detailed solutions for every question with examples and image illustrations.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Questions by Toppers</h3>
+      <p>Attempt quizzes developed by successful candidates in Quant, Reasoning, and Current Affairs.</p>
+    </div>
+    <div class="feature-item">
+      <h3>Ask and Discuss</h3>
+      <p>Join discussions on aptitude questions, doubt-clearing, shortcut methods, and more.</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Testimonials -->
+  <section class="testimonial-section section-card">
+    <h2 class="section-title">What Our Aspirants Say</h2>
+    <div class="testimonial-slider">
+      <mat-card *ngFor="let testimonial of testimonials; let i = index"
+                class="testimonial-card"
+                [class.active]="i === currentSlide">
+        <img [src]="testimonial.avatar" alt="User" class="avatar" />
+        <h3>{{ testimonial.name }}</h3>
+        <p class="quote">"{{ testimonial.message }}"</p>
+      </mat-card>
+    </div>
+    <div class="slider-controls">
+      <button mat-icon-button (click)="prevSlide()"><mat-icon>chevron_left</mat-icon></button>
+      <button mat-icon-button (click)="nextSlide()"><mat-icon>chevron_right</mat-icon></button>
+    </div>
+  </section>
+
+</div>

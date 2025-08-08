@@ -1,0 +1,33 @@
+<div class="login-page-split">
+  <div class="login-image-half">
+    <img src="assets/loginnregimg.png" alt="Login Illustration" />
+  </div>
+  <div class="login-form-half">
+    <div class="login-glass-form">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="example@email.com" />
+          <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            Valid email is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="********" />
+          <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="full-width" [disabled]="loginForm.invalid">
+          Login
+        </button>
+        <p class="signup-link">
+          Don't have an account?
+          <a routerLink="/register">Register here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

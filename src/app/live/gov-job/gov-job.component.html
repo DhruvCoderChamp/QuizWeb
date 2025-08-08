@@ -1,0 +1,42 @@
+<div class="jobs-grid-container">
+  <div class="job-card" *ngFor="let job of jobs">
+    <div class="job-card-header">{{ job.jobName }}</div>
+    <a class="job-card-title" href="#">{{ job.jobTitle }}</a>
+    <div class="job-card-positions">
+      <span class="job-icon">
+        <!-- Users SVG -->
+        <svg width="22" height="22" fill="none" stroke="#3a434a" stroke-width="1.7" viewBox="0 0 24 24">
+          <circle cx="8" cy="8" r="3"/>
+          <ellipse cx="8" cy="16" rx="6" ry="3"/>
+        </svg>
+      </span>
+      <strong>Positions:</strong> {{ job.jobCount }}
+    </div>
+    <div class="job-card-eligibility-label">Eligibility:</div>
+    <div class="job-card-eligibility">
+      <span *ngFor="let e of job.eligibility" class="pill">{{ e }}</span>
+    </div>
+    <div class="job-card-location">
+      <span class="job-icon">
+        <!-- Location SVG -->
+        <svg width="19" height="19" fill="none" stroke="#296bcc" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M12 21C12 21 5 13.5 5 9.5C5 6.462 7.462 4 12 4C16.538 4 19 6.462 19 9.5C19 13.5 12 21 12 21Z"/>
+          <circle cx="12" cy="9.5" r="2"/>
+        </svg>
+      </span>
+      All India
+    </div>
+    <div class="job-card-date">
+      <span class="job-icon">
+        <!-- Calendar SVG -->
+        <svg width="19" height="19" fill="none" stroke="#ea473c" stroke-width="1.7" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="3"/>
+          <line x1="8" y1="3" x2="8" y2="7"/>
+          <line x1="16" y1="3" x2="16" y2="7"/>
+          <line x1="3" y1="11" x2="21" y2="11"/>
+        </svg>
+      </span>
+      <span class="date-label">Last Date: </span>{{ job.lastDate | date:'MMM d, yyyy' }}
+    </div>
+  </div>
+</div>

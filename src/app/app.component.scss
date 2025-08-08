@@ -1,0 +1,213 @@
+/* ====== GLOBAL RESET AND SIZING ====== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;  /* No horizontal scroll */
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #f2f4f8;
+  color: #212121;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ====== HEADER ====== */
+.main-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0 24px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  background: rgba(33, 150, 243, 0.75);
+  backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.24);
+  overflow-x: hidden;
+  z-index: 100;
+}
+
+.main-header.light-glass {
+  background: rgba(33, 150, 243, 0.6);
+  backdrop-filter: blur(12px) saturate(180%);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.logo:hover {
+  color: #ffe082;
+}
+
+.logo-icon {
+  margin-right: 6px;
+  color: #ffeb3b;
+  font-size: 2rem;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+mat-toolbar button[mat-button],
+mat-toolbar button[mat-stroked-button],
+mat-toolbar a[mat-stroked-button],
+mat-toolbar a[mat-flat-button] {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  min-width: 110px;
+  transition: background 0.17s, color 0.17s;
+}
+
+mat-toolbar button.logout-btn {
+  margin-left: 24px;
+}
+
+mat-toolbar mat-icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.header-btn {
+  border-radius: 22px;
+}
+
+mat-toolbar .mat-stroked-button:not(.logout-btn) {
+  border-color: #ff9800;
+  color: #ff9800;
+}
+
+@media (max-width: 900px) {
+  .main-header {
+    padding: 0 12px;
+  }
+  .logo {
+    font-size: 1.15rem;
+  }
+  mat-toolbar button, mat-toolbar a {
+    font-size: 0.95rem;
+    min-width: 80px;
+  }
+}
+
+/* ====== MAIN CONTENT ====== */
+.content, main.content {
+  width: 100%;                /* Full viewport width */
+  max-width: 100%;            /* Prevent overflow */
+  margin: 10px 0 0 0;          /* Top margin, no side margin */
+  padding: 32px 20px 50px 20px; /* Comfortable horizontal padding */
+  min-height: 65vh;
+  background: rgba(255,255,255,0.97);
+  border-radius: 14px 14px 0 0; /* Rounded top corners */
+  box-shadow: 0 4px 32px rgba(51,81,255,0.06);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .content, main.content {
+    padding: 12px 15px 80px 15px;
+    margin-top: 40px;
+    border-radius: 0;
+  }
+}
+
+/* ====== FOOTER ====== */
+.footer {
+  width: 100%;
+  max-width: 100%;
+  padding: 20px 24px;
+  background: rgba(33,150,243,0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 1.05rem;
+  box-shadow: 0 -1px 16px rgba(90,120,255,0.10);
+  backdrop-filter: blur(8px) saturate(145%);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.footer-logo {
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  color: #fdd835;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.subscribe-field {
+  min-width: 180px;
+  max-width: 320px;
+  flex-shrink: 1;
+}
+
+.subscribe-btn {
+  border-radius: 22px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #ffe082;
+}
+
+@media (max-width: 799px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 10vw 18px 10vw;
+    gap: 12px;
+  }
+  .subscribe-form {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .subscribe-field {
+    min-width: 140px;
+    width: 100%;
+    max-width: 100%;
+  }
+}

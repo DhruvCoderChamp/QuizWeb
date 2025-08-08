@@ -1,0 +1,216 @@
+/* Container for all test-related content */
+.test-grid-container {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+/* Banner section with heading and description */
+.test-banner {
+  background: #2196f3cc; /* semi-transparent primary blue */
+  color: #fff;
+  padding: 24px 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 32px;
+  box-shadow: 0 6px 12px rgba(33, 150, 243, 0.3);
+}
+
+.test-banner h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.test-banner p {
+  font-size: 1.15rem;
+  font-weight: 400;
+  opacity: 0.9;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Section title with highlight */
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #212121;
+  user-select: none;
+}
+
+.section-title .highlight {
+  color: #ffca28; /* accent yellow */
+  font-weight: 700;
+}
+
+/* Grid for all test cards */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+/* Each test card */
+.test-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgb(33 150 243 / 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  background-color: #fff;
+  min-height: 320px;
+}
+
+.test-card:hover {
+  box-shadow: 0 12px 28px rgb(33 150 243 / 0.22);
+  transform: translateY(-6px);
+}
+
+/* Card header: avatar, title and subtitle */
+.test-avatar {
+  background-color: #ffca28;
+  color: #212121;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  user-select: none;
+}
+
+mat-card-header {
+  padding-bottom: 12px;
+}
+
+mat-card-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  user-select: text;
+}
+
+mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  user-select: text;
+  margin-top: 4px;
+}
+
+/* Meta information grid inside card content */
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #424242;
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.meta-grid > div strong {
+  color: #1565c0; /* darker blue for labels */
+}
+
+/* Card actions: align button to right */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0;
+  margin-top: auto; /* push actions to bottom */
+}
+
+/* Start button styling */
+.start-button {
+  background-color: #1976d2; /* primary dark */
+  color: #fff;
+  font-weight: 700;
+  border-radius: 26px;
+  padding: 8px 22px;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+
+.start-button:hover {
+  background-color: #0d47a1;
+}
+
+/* Pagination controls container */
+.pagination-controls {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  user-select: none;
+}
+
+.pagination-controls button {
+  min-width: 90px;
+  font-weight: 600;
+  color: #1565c0;
+  border-radius: 22px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Page info text */
+.page-info {
+  font-size: 1rem;
+  color: #212121;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 780px) {
+  .test-banner h1 {
+    font-size: 2rem;
+  }
+  .test-banner p {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .test-grid {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+  .meta-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .test-banner h1 {
+    font-size: 1.6rem;
+  }
+  .test-banner p {
+    font-size: 0.95rem;
+  }
+  .section-title {
+    font-size: 1.25rem;
+  }
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+  .meta-grid {
+    grid-template-columns: 1fr;
+    gap: 6px 12px;
+  }
+  mat-card-actions {
+    justify-content: center;
+  }
+  .start-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="signup-page-split">
+  <div class="signup-image-half">
+    <img src="assets/loginnregimg.png" alt="Signup Illustration" />
+  </div>
+  <div class="signup-form-half">
+    <div class="signup-glass-form">
+      <h2>Create Your Account</h2>
+      <form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <!-- Name -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="name" placeholder="John Doe" />
+          <mat-error *ngIf="validateForm.get('name')?.invalid && validateForm.get('name')?.touched">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="example@email.com" type="email" />
+          <mat-error *ngIf="validateForm.get('email')?.invalid && validateForm.get('email')?.touched">
+            Valid email is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" placeholder="********" type="password" />
+          <mat-error *ngIf="validateForm.get('password')?.invalid && validateForm.get('password')?.touched">
+            Minimum 6 characters required
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="full-width" [disabled]="validateForm.invalid">
+          Register
+        </button>
+
+        <p class="login-link">
+          Already have an account?
+          <a routerLink="/login">Login here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

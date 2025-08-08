@@ -1,0 +1,102 @@
+<div class="create-test-container">
+  <mat-card class="create-card">
+    <h2>Create New Test</h2>
+
+    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+
+      <!-- Title -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Test Title</mat-label>
+        <input matInput formControlName="title" placeholder="E.g. SSC CGL Mock 1" />
+        <mat-error *ngIf="testForm.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Description -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+        <mat-error *ngIf="testForm.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Duration -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Test Duration (minutes)</mat-label>
+        <input matInput type="number" min="1" formControlName="time" />
+        <mat-error *ngIf="testForm.get('time')?.hasError('required')">
+          Time is required
+        </mat-error>
+        <mat-error *ngIf="testForm.get('time')?.hasError('min')">
+          Minimum 1 minute required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Total Questions -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Total Questions</mat-label>
+        <input matInput type="number" min="1" formControlName="totalQuestions" />
+        <mat-error *ngIf="testForm.get('totalQuestions')?.hasError('required')">
+          Total Questions are required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Total Marks -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Total Marks</mat-label>
+        <input matInput type="number" min="1" formControlName="totalMarks" />
+        <mat-error *ngIf="testForm.get('totalMarks')?.hasError('required')">
+          Total Marks are required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Difficulty -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Difficulty</mat-label>
+        <mat-select formControlName="difficulty">
+          <mat-option *ngFor="let level of difficulties" [value]="level">
+            {{ level }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="testForm.get('difficulty')?.hasError('required')">
+          Difficulty is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Languages -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Languages</mat-label>
+        <mat-select formControlName="languages" multiple>
+          <mat-option value="English">English</mat-option>
+          <mat-option value="Hindi">Hindi</mat-option>
+        </mat-select>
+        <mat-error *ngIf="testForm.get('languages')?.hasError('required')">
+          At least one language must be selected
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Category -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Select Category</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="testForm.get('categoryId')?.hasError('required')">
+          Category is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="testForm.invalid">
+        Create Test
+      </button>
+
+      <!-- Success Message -->
+      <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>
+    </form>
+  </mat-card>
+</div>

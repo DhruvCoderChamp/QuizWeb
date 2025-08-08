@@ -1,0 +1,20 @@
+<div class="create-category-container">
+  <mat-card>
+    <h2>Create New Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Category Name</mat-label>
+        <input matInput formControlName="name" placeholder="e.g., History, Math, etc." />
+        <mat-error *ngIf="categoryForm.get('name')?.hasError('required')">
+          Category name is required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="categoryForm.invalid">
+        ➕ Add Category
+      </button>
+
+      <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>
+    </form>
+  </mat-card>
+</div>

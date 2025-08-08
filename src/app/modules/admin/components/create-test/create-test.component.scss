@@ -1,0 +1,40 @@
+.create-test-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+
+  .create-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 32px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .full-width {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .success-msg {
+      color: green;
+      margin-top: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .create-test-container {
+    padding: 16px;
+
+    .create-card {
+      padding: 24px;
+    }
+  }
+}

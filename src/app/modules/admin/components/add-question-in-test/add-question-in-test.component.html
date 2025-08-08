@@ -1,0 +1,52 @@
+<!-- add-questions.component.html -->
+<div class="add-question-container">
+  <h2>Add Questions to Test</h2>
+
+  <form [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Question</mat-label>
+      <textarea matInput formControlName="questionText" required></textarea>
+    </mat-form-field>
+
+    <div class="options-grid">
+      <mat-form-field appearance="outline" class="option-field">
+        <mat-label>Option A</mat-label>
+        <input matInput formControlName="optionA" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="option-field">
+        <mat-label>Option B</mat-label>
+        <input matInput formControlName="optionB" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="option-field">
+        <mat-label>Option C</mat-label>
+        <input matInput formControlName="optionC" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="option-field">
+        <mat-label>Option D</mat-label>
+        <input matInput formControlName="optionD" required />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Correct Option</mat-label>
+      <mat-select formControlName="correctOption" required>
+        <mat-option value="A">A</mat-option>
+        <mat-option value="B">B</mat-option>
+        <mat-option value="C">C</mat-option>
+        <mat-option value="D">D</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-flat-button color="primary" type="submit" [disabled]="questionForm.invalid">
+        ➕ Add Question
+      </button>
+      <button mat-stroked-button color="accent" (click)="goBack()">
+        ⬅️ Back to Test List
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="news-container">
+  <div class="news-section">
+    <h2>📰 Top Headlines</h2>
+    <ul *ngIf="topHeadlines.length; else noHeadlines" class="news-list">
+      <li *ngFor="let article of topHeadlines" class="news-item">
+        <a [href]="article.url" target="_blank" rel="noopener">
+          <h3>{{ article.title }}</h3>
+        </a>
+        <p>{{ article.description || 'No description available.' }}</p>
+        <div class="news-meta">
+          <span>Published: {{ formatDate(article.publishedAt) }}</span>
+          <span>Source: {{ article.source.name }}</span>
+        </div>
+      </li>
+    </ul>
+    <ng-template #noHeadlines><p>No top headlines available.</p></ng-template>
+  </div>
+
+  <div class="news-section">
+    <h2>💻 Technology News</h2>
+    <ul *ngIf="techNews.length; else noTechNews" class="news-list">
+      <li *ngFor="let article of techNews" class="news-item">
+        <a [href]="article.url" target="_blank" rel="noopener">
+          <h3>{{ article.title }}</h3>
+        </a>
+        <p>{{ article.description || 'No description available.' }}</p>
+        <div class="news-meta">
+          <span>Published: {{ formatDate(article.publishedAt) }}</span>
+          <span>Source: {{ article.source.name }}</span>
+        </div>
+      </li>
+    </ul>
+    <ng-template #noTechNews><p>No technology news available.</p></ng-template>
+  </div>
+
+  <div *ngIf="error" class="error-message">{{ error }}</div>
+</div>

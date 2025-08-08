@@ -1,0 +1,241 @@
+/* Container */
+.container {
+  max-width: 680px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  padding: 1.8rem 2.2rem;
+  box-shadow: 0 10px 22px rgb(30 40 70 / 0.1);
+  border-radius: 14px;
+  color: #222;
+}
+
+h2 {
+  margin-bottom: 0.2rem;
+  color: #1565c0;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: 1.4rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.toggle-btn {
+  background-color: #1976d2;
+  border: none;
+  color: white;
+  padding: 0.52rem 1.1rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1.6rem;
+  transition: background-color 0.25s ease;
+}
+.toggle-btn:hover {
+  background-color: #115293;
+}
+
+/* Form Section */
+.form-section {
+  background: #f3f8ff;
+  border-radius: 10px;
+  padding: 1.8rem 1.4rem 1.4rem 1.4rem;
+  border: 1.5px solid #c2d4fb;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin: 0.4rem 0 0.12rem 0;
+  color: #21325f;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.44rem 0.6rem;
+  font-size: 1rem;
+  border: 1.5px solid #aab9d1;
+  border-radius: 7px;
+  box-sizing: border-box;
+  transition: border-color 0.22s;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #1565c0;
+  box-shadow: 0 0 5px #689aec88;
+}
+
+.option-group {
+  margin-bottom: 0.7rem;
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+.save-btn {
+  background-color: #0d47a1;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.56rem 1.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.save-btn:disabled {
+  background-color: #9cc2f0;
+  cursor: default;
+}
+.save-btn:not(:disabled):hover {
+  background-color: #083d8f;
+}
+
+/* Questions List */
+.quiz-card {
+  border: 1.4px solid #d4d8e9;
+  background-color: #fafcff;
+  border-radius: 10px;
+  margin-bottom: 1.6rem;
+  padding: 1.2rem 1.4rem;
+}
+
+.quiz-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: #0a306d;
+  font-size: 1.19rem;
+}
+
+ul {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+li {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #232a3e;
+  position: relative;
+}
+
+li.correct {
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.correct-mark {
+  font-weight: 700;
+  color: #2e7d32;
+  margin-left: 0.6rem;
+}
+
+/* Question Card Buttons */
+.question-actions {
+  text-align: right;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: 1.7px solid transparent;
+  padding: 3.8px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 0.6rem;
+  transition: background-color 0.23s ease, border-color 0.23s ease;
+}
+.edit-btn {
+  color: #0d47a1;
+  border-color: #0d47a1;
+}
+.edit-btn:hover {
+  background-color: #0d47a1;
+  color: white;
+}
+
+.delete-btn {
+  color: #b71c1c;
+  border-color: #b71c1c;
+}
+.delete-btn:hover {
+  background-color: #b71c1c;
+  color: white;
+}
+
+.no-questions {
+  font-style: italic;
+  color: #6b6b6b;
+  margin-top: 1rem;
+}
+
+@media (max-width: 680px) {
+  .container {
+    margin: 1rem 1rem 2rem 1rem;
+    padding: 1.3rem 1.3rem;
+  }
+  .toggle-btn,
+  .save-btn {
+    width: 100%;
+    padding: 0.61rem 0;
+    font-size: 1.06rem;
+  }
+  .question-actions {
+    text-align: center;
+  }
+  .edit-btn,
+  .delete-btn {
+    margin: 0.35rem 0.35rem 0 0;
+    width: 48%;
+  }
+  ul {
+    padding-left: 1.2rem;
+  }
+}
+/* ---------- metadata grid ---------- */
+.quiz-metadata-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.meta-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px; /* tweak as needed */
+}
+
+/* ---------- question form ---------- */
+.options-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.option-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 160px; /* tweak as needed */
+}
+
+.correct {
+  font-weight: bold;
+  color: green;
+}
+button {
+  margin: 5px;
+}

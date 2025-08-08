@@ -1,0 +1,111 @@
+<!-- ========== QUIZ METADATA ========== -->
+<h2>📰 Edit Quiz Metadata</h2>
+
+<div class="quiz-metadata-form">
+  <div class="meta-block">
+    <label for="quizTitle">Title</label>
+    <input id="quizTitle" type="text" [(ngModel)]="quiz.title"
+           placeholder="Quiz Title" autocomplete="off" />
+  </div>
+
+  <div class="meta-block">
+    <label for="quizDate">Date</label>
+    <input id="quizDate" type="date" [(ngModel)]="quiz.date" autocomplete="off" />
+  </div>
+
+  <div class="meta-block">
+    <label for="quizDuration">Duration</label>
+    <input id="quizDuration" type="text" [(ngModel)]="quiz.duration"
+           placeholder="e.g., 8 Minutes" autocomplete="off" />
+  </div>
+
+  <div class="meta-block">
+    <label for="quizQuestionsCount">Questions (max 10)</label>
+    <input id="quizQuestionsCount" type="number" min="1" max="10"
+           [(ngModel)]="quiz.questionsCount" autocomplete="off" />
+  </div>
+
+  <div class="meta-block">
+    <label for="quizTotalMarks">Total Marks</label>
+    <input id="quizTotalMarks" type="number" min="1"
+           [(ngModel)]="quiz.totalMarks" autocomplete="off" />
+  </div>
+
+  <div class="meta-block">
+    <label for="quizDifficulty">Difficulty</label>
+    <select id="quizDifficulty" [(ngModel)]="quiz.difficulty">
+      <option value="">—</option>
+      <option value="EASY">EASY</option>
+      <option value="MEDIUM">MEDIUM</option>
+      <option value="HARD">HARD</option>
+    </select>
+  </div>
+</div>
+
+<hr />
+
+<!-- ========== QUESTION EDITOR ========== -->
+<button
+  class="toggle-btn"
+  *ngIf="quiz.questions.length < quiz.questionsCount || editMode"
+  (click)="toggleForm()"
+>
+  {{ showForm ? 'Cancel' : (editMode ? 'Cancel Edit' : 'Add Question') }}
+</button>
+
+
+<div *ngIf="showForm" class="form-section">
+  <h3>{{ editMode ? '✏️ Edit Question' : '➕ Add Question' }}
+      ({{ quiz.questions.length + 1 }}/{{ quiz.questionsCount || 0 }})</h3>
+
+  <label for="questionText">Question Text</label>
+  <input id="questionText" maxlength="250" type="text"
+         placeholder="Enter question text"
+         [(ngModel)]="tempQuestion.text" autocomplete="off" />
+
+  <div class="options-row">
+    <div class="option-group" *ngFor="let opt of tempQuestion.options; let i = index; trackBy: trackByIndex">
+      <label [attr.for]="'option-' + i">Option {{ i + 1 }}</label>
+      <input [id]="'option-' + i" maxlength="150" type="text"
+             [(ngModel)]="tempQuestion.options[i]"
+             placeholder="Enter option {{ i + 1 }}" autocomplete="off" />
+    </div>
+  </div>
+
+  <label for="correctIndex">Correct Option</label>
+  <select id="correctIndex" [(ngModel)]="tempQuestion.correctIndex">
+    <option *ngFor="let opt of tempQuestion.options; let i = index"
+            [ngValue]="i"
+            [disabled]="!opt.trim()">Option {{ i + 1 }}</option>
+  </select>
+
+  <button class="save-btn" [disabled]="!canSave()"
+          (click)="editMode ? updateQuestion() : addQuestion()">
+    {{ editMode ? 'Update' : 'Add' }}
+  </button>
+</div>
+
+<hr />
+
+<!-- ========== DISPLAY QUESTIONS ========== -->
+<div *ngIf="quiz.questions.length > 0">
+  <h3>📋 Added Questions</h3>
+  <div *ngFor="let question of quiz.questions; let i = index">
+    <p><strong>Q{{ i + 1 }}:</strong> {{ question.text }}</p>
+    <ul>
+      <li *ngFor="let opt of question.options; let j = index"
+          [class.correct]="j === question.correctIndex">
+        {{ j + 1 }}. {{ opt }}
+        <span *ngIf="j === question.correctIndex">✅</span>
+      </li>
+    </ul>
+    <button (click)="startEditQuestion(i)">Edit</button>
+    <button (click)="deleteQuestion(i)">Delete</button>
+    <hr />
+  </div>
+</div>
+
+<!-- ========== SUBMIT BUTTON ========== -->
+<button *ngIf="canSubmit()" (click)="submitQuiz()">
+  ✅ Submit Quiz
+</button>

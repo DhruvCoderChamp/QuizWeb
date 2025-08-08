@@ -1,0 +1,40 @@
+.add-question-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .option-field {
+      flex: 1 1 45%;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      min-width: 160px;
+    }
+  }
+}

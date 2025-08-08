@@ -1,0 +1,152 @@
+<!-- Instructions backdrop & card visible only for steps 1 and 2 -->
+<div *ngIf="showInstructionsStep === 1 || showInstructionsStep === 2" class="instructions-backdrop">
+  <div class="instructions-card">
+    <!-- Optional icon for step 1 -->
+    <img src="https://cdn-icons-png.flaticon.com/128/833/833472.png"
+      style="max-width:52px;display:block;margin:0 auto 1.5rem auto;opacity:0.8;" *ngIf="showInstructionsStep === 1" />
+
+    <!-- Headers -->
+    <h2 *ngIf="showInstructionsStep === 1">General Instructions</h2>
+    <h2 *ngIf="showInstructionsStep === 2">Test Instructions</h2>
+
+    <!-- Step 1 Content: General Instructions -->
+    <div class="instructions-content" *ngIf="showInstructionsStep === 1">
+      <ol>
+        <li>
+          The clock will be set at the server. The countdown timer at the top right corner of your screen will display
+          the remaining time available for you to complete the examination. When the timer reaches zero, the examination
+          will end by itself. You need not terminate the examination or submit your paper.
+        </li>
+        <li>
+          The Question Palette displayed on the right side of the screen will show the status of each question with
+          symbols:
+          not visited, not answered, answered, marked for review, answered & marked for review.
+        </li>
+        <li>
+          <strong>Navigating to a Question:</strong>
+          <ul>
+            <li>Click the question number in the Question Palette to go to that question directly. (This does NOT save
+              your current answer.)</li>
+            <li>Click Next to save your answer for the current question and go to the next question.</li>
+            <li>Your current answer will NOT be saved if you click a question number without saving the current one.
+            </li>
+            <li>You can also view all questions by clicking the Question Paper button.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Answering a Multiple Choice Question (MCQ):</strong>
+          <ul>
+            <li>Choose one answer by clicking it.</li>
+            <li>To deselect, click the same option again.</li>
+            <li>To change your answer, select a different option.</li>
+            <li>Click Next to <strong>save</strong> your answer.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Answering a Numerical Answer Question:</strong>
+          <ul>
+            <li>Enter your answer using the numerical keypad.</li>
+            <li>Fractions like -0.3 or .3 are allowed (up to 4 decimals).</li>
+            <li>Click Next to <strong>save</strong> your answer.</li>
+          </ul>
+        </li>
+        <li>
+          To mark a question for review, click the Star button at the top right corner. Marked answers will be
+          considered
+          for evaluation unless changed by you.
+        </li>
+        <li>
+          To change an answer, select the question and follow the appropriate procedure to save a new answer.
+        </li>
+        <li>
+          Only questions with saved answers or marked for review will be evaluated.
+        </li>
+        <li>
+          Sections are displayed in the top bar. You can navigate between sections by clicking buttons at the lower
+          right.
+        </li>
+        <li>
+          After the last question in a section, clicking Next will take you to the first question of the next section.
+        </li>
+      </ol>
+    </div>
+
+    <!-- Step 2 Content: Test Instructions -->
+    <div class="instructions-content" *ngIf="showInstructionsStep === 2">
+      <ul>
+        <li>The test will automatically submit when time expires.</li>
+        <li>The test comprises multiple choice questions (MCQ) with one correct answer.</li>
+        <li>The timer on the top right displays remaining time.</li>
+        <li>Answers are saved immediately when you select an option.</li>
+        <li>Use the 'Clear Response' button to deselect your answer.</li>
+        <li>The marking scheme appears on the top right for each question.</li>
+      </ul>
+
+      <div class="form-section">
+        <label for="language-select" class="lang-label">Choose default Language:</label>
+        <select id="language-select" [(ngModel)]="selectedLanguage" name="language-select">
+          <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+        </select>
+      </div>
+
+      <div class="agree-row">
+        <label class="agree-label" for="agree-checkbox">
+          <input id="agree-checkbox" class="styled-checkbox" type="checkbox" [(ngModel)]="agreeToRules"
+            name="agreeToRules" />
+          <span>
+            I have read all the instructions carefully and understood them.
+            I agree not to chat or use unfair means in the examination. I understand that violations will lead to
+            disqualification.
+            The decision of Prepp.in will be final and binding.
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="instructions-controls">
+      <button *ngIf="showInstructionsStep === 2" class="button secondary" (click)="showInstructionsStep=1">Back</button>
+      <button *ngIf="showInstructionsStep === 1" class="button primary" (click)="showInstructionsStep=2">Next</button>
+      <button *ngIf="showInstructionsStep === 2" class="button primary" [disabled]="!agreeToRules"
+        (click)="startTest()">Proceed</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ===== 3. Actual Exam Interface (visible only after Proceed) ===== -->
+<div class="exam-container" *ngIf="showInstructionsStep === 3">
+  <div class="question-panel">
+    <h2>Q{{ currentQuestionIndex + 1 }}: {{ questions[currentQuestionIndex]?.questionText }}</h2>
+    <div class="options">
+      <label *ngFor="let opt of ['A', 'B', 'C', 'D']">
+        <input type="radio" [name]="'q' + currentQuestionIndex" [value]="opt"
+          [(ngModel)]="selectedAnswers[currentQuestionIndex]" />
+        {{ questions[currentQuestionIndex]?.['option' + opt] }}
+      </label>
+    </div>
+    <div class="navigation">
+      <button (click)="previous()" [disabled]="currentQuestionIndex === 0">Previous</button>
+      <button (click)="next()" [disabled]="currentQuestionIndex === questions.length - 1">Next</button>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="timer-box">⏳ {{ formattedTime }}</div>
+    <h3>Questions</h3>
+    <div class="view-toggle">
+      <button (click)="toggleView()">
+        Switch to {{ isGridView ? 'List' : 'Grid' }} View
+      </button>
+    </div>
+
+    <div class="q-nav" [ngClass]="{'grid-view': isGridView, 'list-view': !isGridView}">
+      <button *ngFor="let q of questions; index as i" [class.answered]="selectedAnswers[i]" (click)="goToQuestion(i)">
+        {{ i + 1 }}
+      </button>
+    </div>
+
+    <button class="submit-btn" (click)="submitTest()">Submit Test</button>
+  </div>
+</div>
