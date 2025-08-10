@@ -1,0 +1,33 @@
+<div class="test-container">
+  <div *ngIf="loading" class="loading">Loading test...</div>
+
+  <div *ngIf="!loading && testData">
+    <h2>{{ testData.title }}</h2>
+    <div class="meta-info">
+      <p><strong>Date:</strong> {{ testData.date | date }}</p>
+      <p><strong>Duration:</strong> {{ testData.duration }}</p>
+      <p><strong>Questions:</strong> {{ testData.questionsCount }}</p>
+    </div>
+
+    <hr />
+
+    <div *ngFor="let q of testData.questions; let i = index" class="question-block">
+      <p><strong>Q{{ i + 1 }}:</strong> {{ q.text }}</p>
+      <ul>
+        <li *ngFor="let opt of q.options; let j = index"
+            (click)="score === null && selectAnswer(i, j)"
+            [class.selected]="selectedAnswers[i] === j"
+            [class.correct]="score !== null && j === q.correctIndex"
+            [class.incorrect]="score !== null && selectedAnswers[i] === j && selectedAnswers[i] !== q.correctIndex">
+          {{ j + 1 }}. {{ opt }}
+        </li>
+      </ul>
+    </div>
+
+    <button *ngIf="score === null" (click)="submitQuiz()">Submit</button>
+
+    <div *ngIf="score !== null" class="result">
+      <h3>Score: {{ score }} / {{ testData.questions.length }}</h3>
+    </div>
+  </div>
+</div>

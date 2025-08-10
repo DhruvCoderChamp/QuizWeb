@@ -1,0 +1,147 @@
+.test-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .meta-info {
+    text-align: center;
+    font-size: 14px;
+    color: #7f8c8d;
+
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  /* Question Block */
+  .question-block {
+    margin-bottom: 24px;
+    padding: 16px;
+    border-radius: 8px;
+    background: #f9fafb;
+    border: 1px solid #e0e6ed;
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: #34495e;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 10px 14px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        background: #ffffff;
+        border: 1px solid #e0e6ed;
+        transition: background 0.2s, border-color 0.2s;
+        font-size: 14px;
+
+        &.correct {
+          background: #d4edda;
+          border-color: #28a745;
+          color: #155724;
+          font-weight: 600;
+        }
+
+        &:hover {
+          background: #eef2f7;
+          border-color: #bdc3c7;
+          cursor: pointer;
+        }
+
+        span {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+
+  /* Loading & Empty States */
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-top: 40px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .test-container {
+    padding: 16px;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    .question-block {
+      p {
+        font-size: 15px;
+      }
+
+      ul li {
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+    }
+  }
+}
+li {
+  cursor: pointer;
+
+  &.selected {
+    background: #d0e6ff;
+    border-color: #3399ff;
+    font-weight: 600;
+  }
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+li {
+  cursor: pointer;
+
+  &.selected {
+    background: #d0e6ff;
+    border-color: #3399ff;
+    font-weight: 600;
+  }
+}
+
+.result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+}

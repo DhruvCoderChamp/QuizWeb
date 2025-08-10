@@ -1,0 +1,26 @@
+<div class="user-tests-container">
+  <h2>📰 Latest Current Affairs Tests</h2>
+
+  <div *ngIf="loading" class="loading">Loading tests...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div class="cards-wrapper" *ngIf="!loading && latestTests.length">
+    <div
+      class="test-card"
+      *ngFor="let test of latestTests"
+      (click)="goToTest(test.id!)"
+    >
+      <h3>{{ test.title }}</h3>
+      <p class="date">{{ test.date | date:'mediumDate' }}</p>
+      <p><strong>Duration:</strong> {{ test.duration }}</p>
+      <p><strong>Questions:</strong> {{ test.questionsCount }}</p>
+      <span class="difficulty {{ test.difficulty.toLowerCase() }}">
+        {{ test.difficulty }}
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && latestTests.length === 0" class="no-tests">
+    No tests available at the moment.
+  </div>
+</div>
