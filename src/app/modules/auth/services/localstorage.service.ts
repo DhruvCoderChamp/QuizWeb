@@ -1,47 +1,77 @@
 import { Injectable } from '@angular/core';
 
-const USER = 'q_user';
-
 @Injectable({
   providedIn: 'root'
 })
 export class LocalstorageService {
 
+  private static TOKEN_KEY = 'auth_token';
+  private static USER_KEY = 'auth_user';
+
   constructor() { }
 
-  static saveUser(user:any): void{
-    window.localStorage.removeItem(USER);
-    window.localStorage.setItem(USER, JSON.stringify(user));
+  // ===== TOKEN =====
+  static saveTokenFromResponse(response: any): void {
+    if (response && response.data && response.data.token) {
+      sessionStorage.setItem(this.TOKEN_KEY, response.data.token);
+    }
   }
 
-  static getUser():any{
-    return JSON.parse(localStorage.getItem(USER));
+  static saveToken(token: string): void {
+    sessionStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  static getUserId():string{
+  static getToken(): string | null {
+    return sessionStorage.getItem(this.TOKEN_KEY);
+  }
+
+  static clearToken(): void {
+    sessionStorage.removeItem(this.TOKEN_KEY);
+  }
+
+  // ===== USER =====
+  static saveUserFromResponse(response: any): void {
+    if (response && response.data) {
+      const { token, ...userData } = response.data; // remove token from user object
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(userData));
+    }
+  }
+
+  static saveUser(user: any): void {
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
+  }
+
+  static getUser(): any {
+    const user = sessionStorage.getItem(this.USER_KEY);
+    return user ? JSON.parse(user) : null;
+  }
+
+  static clearUser(): void {
+    sessionStorage.removeItem(this.USER_KEY);
+  }
+
+  // ===== USER HELPERS =====
+  static getUserId(): string {
     const user = this.getUser();
-    if(user ==null){return '';}
-    return user.id;
+    return user?.id || '';
   }
 
-    static getUserRole():string{
+  static getUserRole(): string {
     const user = this.getUser();
-    if(user ==null){return '';}
-    return user.role;
+    return user?.role || '';
   }
 
-  static isAdminLoggedIn(): boolean{
-    const role : string = this.getUserRole();
-    return role == 'ADMIN';
+  static isAdminLoggedIn(): boolean {
+    return this.getUserRole() === 'ADMIN';
   }
 
-  
-  static isUserLoggedIn(): boolean{
-    const role : string = this.getUserRole();
-    return role == 'USER';
+  static isUserLoggedIn(): boolean {
+    return this.getUserRole() === 'USER';
   }
 
-static signout():void{
-  window.localStorage.removeItem(USER);
-}
+  // ===== CLEAR ALL =====
+  static signout(): void {
+    this.clearToken();
+    this.clearUser();
+  }
 }

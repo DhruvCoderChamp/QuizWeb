@@ -28,35 +28,37 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (res) => {
-          // ✅ Save user to local storage
-          LocalstorageService.saveUser(res);
+  if (this.loginForm.valid) {
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        // ✅ Extract from res.data
+        const data = res.data;
 
-          // ✅ Notify app of current user
-          this.authService.setUser(res);
+        const userData = {
+          id: data.id,
+          name: data.name,
+          email: data.email,
+          role: data.role
+        };
 
-          // ✅ Success message
-          this.snackBar.open('Login successful!', 'Close', { duration: 3000 });
-          const user ={
-            id: res.id,
-            role: res.role
-          }
-          LocalstorageService.saveUser(user);
-          if(LocalstorageService.isAdminLoggedIn()){
-            this.router.navigateByUrl('admin/dashboard')
-          }else if(LocalstorageService.isUserLoggedIn()){
-            this.router.navigateByUrl('user/dashboard')
-          }
-          console.log(res);
-        },
-        error: () => {
-          this.snackBar.open('Login failed. Please check credentials.', 'Close', {
-            duration: 3000
-          });
+        this.authService.setAuthData(data.token, userData);
+
+        this.snackBar.open('Login successful!', 'Close', { duration: 3000 });
+
+        if (LocalstorageService.isAdminLoggedIn()) {
+          this.router.navigateByUrl('/admin/dashboard');
+        } else if (LocalstorageService.isUserLoggedIn()) {
+          this.router.navigateByUrl('/user/dashboard');
         }
-      });
-    }
+      },
+      error: (err) => {
+        const message = err?.error?.message || 'Login failed. Please check credentials.';
+        this.snackBar.open(message, 'Close', { duration: 3000 });
+      }
+    });
+  } else {
+    this.snackBar.open('Please fill in all required fields.', 'Close', { duration: 3000 });
   }
+}
+
 }
