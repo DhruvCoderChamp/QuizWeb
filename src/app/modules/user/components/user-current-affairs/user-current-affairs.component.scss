@@ -1,0 +1,71 @@
+.user-tests-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .loading,
+  .error,
+  .no-tests {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 40px;
+    color: #666;
+  }
+
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .test-card {
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .difficulty {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 8px;
+
+      &.easy {
+        background: #d4edda;
+        color: #155724;
+      }
+      &.medium {
+        background: #fff3cd;
+        color: #856404;
+      }
+      &.hard {
+        background: #f8d7da;
+        color: #721c24;
+      }
+    }
+  }
+}

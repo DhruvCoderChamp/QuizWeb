@@ -7,11 +7,14 @@ import { MatCardModule } from "@angular/material/card";
 import { CategoryTestListComponent } from './components/category-test-list/category-test-list.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ExamInterfaceComponent } from './components/exam-interface/exam-interface.component';
+import { UserCurrentAffairsComponent } from './components/user-current-affairs/user-current-affairs.component';
+import { UserCurrentAffairsTestComponent } from './components/user-current-affairs-test/user-current-affairs-test.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CategoryTestListComponent,
+    
     
   ],
   imports: [
@@ -19,7 +22,9 @@ import { ExamInterfaceComponent } from './components/exam-interface/exam-interfa
     UserRoutingModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    ExamInterfaceComponent
+    ExamInterfaceComponent,
+    UserCurrentAffairsComponent,
+    UserCurrentAffairsTestComponent,
 ]
 })
 export class UserModule { }
