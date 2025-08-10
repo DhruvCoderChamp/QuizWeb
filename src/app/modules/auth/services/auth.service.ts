@@ -1,38 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-const BASIC_URL ="http://localhost:8080/"
+import { LocalstorageService } from './localstorage.service';
+
+const BASIC_URL = "http://localhost:8080/";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
- 
-  private currentUserSubject = new BehaviorSubject<any>(null);
+
+  private currentUserSubject = new BehaviorSubject<any>(LocalstorageService.getUser());
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      this.currentUserSubject.next(JSON.parse(savedUser));
-    }
-  }
+  constructor(private http: HttpClient) {}
 
-  register(data): Observable<any>{
+  register(data: any): Observable<any> {
     return this.http.post(BASIC_URL + "api/auth/sign-up", data);
   }
 
- login(data: { email: string; password: string }): Observable<any> {
+  login(data: { email: string; password: string }): Observable<any> {
     return this.http.post(BASIC_URL + "api/auth/login", data);
   }
 
-   setUser(user: any) {
+  setAuthData(token: string, user: any) {
+    LocalstorageService.saveToken(token);
+    LocalstorageService.saveUser(user);
     this.currentUserSubject.next(user);
   }
 
   logout() {
-    localStorage.removeItem('user');
+    LocalstorageService.signout();
     this.currentUserSubject.next(null);
   }
-
 }
