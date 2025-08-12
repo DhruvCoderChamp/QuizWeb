@@ -8,16 +8,18 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
 import { GovJobUpdateComponent } from './components/gov-job-update/gov-job-update.component';
 import { CurrentAffairsComponent } from './current-affairs/current-affairs.component';
 import { CurrentaffairsviewComponent } from './currentaffairsview/currentaffairsview.component';
+import { AdminGuard } from 'src/app/globalservices/auth/admin.guard';
+
 
 const routes: Routes = [
-  {path:'dashboard', component: DashboardComponent},
-  {path:'create-test', component: CreateTestComponent},
-  {path:'latest-job', component: GovJobUpdateComponent},
-  {path: 'current-affairs', component : CurrentAffairsComponent},
-  {path: 'current-affairs-view', component : CurrentaffairsviewComponent},
-  {path:'add-question/:id', component: AddQuestionInTestComponent},
-  {path:'view-test/:id', component: ViewTestComponent},
-  {path:'create-category', component: CreateCategoryComponent}
+  {path:'dashboard', component: DashboardComponent , canActivate: [AdminGuard]},
+  {path:'create-test', component: CreateTestComponent , canActivate: [AdminGuard]},
+  {path:'latest-job', component: GovJobUpdateComponent , canActivate: [AdminGuard]},
+  {path: 'current-affairs', component : CurrentAffairsComponent , canActivate: [AdminGuard]},
+  {path: 'current-affairs-view', component : CurrentaffairsviewComponent , canActivate: [AdminGuard]},
+  {path:'add-question/:id', component: AddQuestionInTestComponent , canActivate: [AdminGuard]},
+  {path:'view-test/:id', component: ViewTestComponent,  canActivate: [AdminGuard]},
+  {path:'create-category', component: CreateCategoryComponent , canActivate: [AdminGuard]}
 
 ];  
 

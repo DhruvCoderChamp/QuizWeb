@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
   getCategories() {
     this.adminService.getAllCategories().subscribe({
-      next: (res) => this.categories = res,
+      next: (res) => this.categories = res.data,
       error: (err) => console.error(err)
     });
   }
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
     this.isLoading = true;
     this.adminService.getTestsByCategory(categoryId).subscribe({
       next: (res) => {
-        this.tests = res;
+        this.tests = res.data;
         this.isLoading = false;
       },
       error: () => this.isLoading = false

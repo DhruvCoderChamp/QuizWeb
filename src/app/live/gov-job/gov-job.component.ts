@@ -17,8 +17,8 @@ export class GovJobComponent implements OnInit {
 
   loadJobs(): void {
     this.govJobService.getAllJobs().subscribe({
-      next: (data) => {
-        this.jobs = data;
+      next: (res : any) => {
+        this.jobs = res.data;
       },
       error: (error) => {
         console.error('Error loading jobs:', error);

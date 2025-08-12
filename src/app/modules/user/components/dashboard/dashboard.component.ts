@@ -11,6 +11,7 @@ export class DashboardComponent{
 
    
   categories: any[] = [];
+  subject : any;
 
   constructor(private userService: TestService, private router: Router) {}
 x
@@ -19,8 +20,9 @@ x
   // }
   ngOnInit(): void {
   this.userService.getAllCategories().subscribe({
-    next: (res) => {
-      this.categories = res.map((cat: any) => ({
+    next: (res : any) => {
+      this.subject = res.data
+      this.categories = this.subject.map((cat: any) => ({
         ...cat,
         imageUrl: this.getImageForCategory(cat.name)
       }));
@@ -76,7 +78,7 @@ getImageForCategory(name: string): string {
 
   loadCategories() {
     this.userService.getAllCategories().subscribe({
-      next: (res) => this.categories = res,
+      next: (res : any) => this.categories = res.data,
       error: (err) => console.error('Failed to load categories', err)
     });
   }

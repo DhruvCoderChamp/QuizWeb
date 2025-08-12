@@ -56,10 +56,10 @@ export class ExamInterfaceComponent {
   }
 
   loadTest(): void {
-    this.testService.getTestById(this.testId).subscribe((res) => {
-      this.questions = res.questions;
-      this.testTitle = res.testDTO.title;
-      this.timer = res.testDTO.time * 60;
+    this.testService.getTestById(this.testId).subscribe((res : any) => {
+      this.questions = res.data.questions;
+      this.testTitle = res.data.testDTO.title;
+      this.timer = res.data.testDTO.time * 60;
       this.startTimer();
     });
   }

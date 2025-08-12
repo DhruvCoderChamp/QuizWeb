@@ -28,17 +28,17 @@ export class CurrentaffairsviewComponent implements OnInit {
     this.loading = true;
     this.error = null;
     
-    this.currentAffairsService.getAll().subscribe({
-      next: (data) => {
-        this.currentAffairsList = data;
-        this.loading = false;
-      },
-      error: (error) => {
-        this.error = 'Failed to load current affairs data';
-        this.loading = false;
-        console.error('Error loading current affairs:', error);
-      }
-    });
+     this.currentAffairsService.getAll().subscribe({
+    next: (response: any) => { // 👈 Cast response type (or use interface if you define one)
+      this.currentAffairsList = response.data; // ✅ Extract the `data` array
+      this.loading = false;
+    },
+    error: (error) => {
+      this.error = 'Failed to load current affairs data';
+      this.loading = false;
+      console.error('Error loading current affairs:', error);
+    }
+  });
   }
 
   onAdd(): void {

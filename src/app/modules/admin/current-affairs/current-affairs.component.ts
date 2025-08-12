@@ -68,8 +68,8 @@ export class CurrentAffairsComponent implements OnInit {
 
   loadQuiz(id: number): void {
     this.currentAffairsService.getById(id).subscribe({
-      next: (data) => {
-        this.quiz = data;
+      next: (response : any ) => {
+        this.quiz = response.data;
         this.editMode = false;  // question edit form off initially
         this.editIndex = null;
         this.showForm = false;  // question form hidden initially
