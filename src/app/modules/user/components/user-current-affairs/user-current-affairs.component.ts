@@ -25,9 +25,9 @@ export class UserCurrentAffairsComponent implements OnInit {
 
   fetchLatestTests(): void {
     this.currentAffairsService.getAll().subscribe({
-      next: (data) => {
+      next: (res : any) => {
         // Sort by date latest first
-        this.latestTests = data.sort((a, b) =>
+        this.latestTests = res.data.sort((a, b) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
         this.loading = false;

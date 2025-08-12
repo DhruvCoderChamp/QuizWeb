@@ -21,8 +21,8 @@ export class ViewTestComponent implements OnInit {
     if (this.testId) {
       this.adminService.getAllQuestions(this.testId).subscribe({
         next: (res) => {
-          this.testData = res.testDTO;
-          this.questions = res.questions;
+          this.testData = res.data.testDTO;
+          this.questions = res.data.questions;
           this.isLoading = false;
         },
         error: () => {

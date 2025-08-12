@@ -35,8 +35,8 @@ export class GovJobUpdateComponent implements OnInit, AfterContentChecked {
   }
 
   loadJobs() {
-    this.govJobService.getAllJobs().subscribe(data => {
-      this.jobs = data;
+    this.govJobService.getAllJobs().subscribe((resp : any) => {
+      this.jobs = resp.data;
     });
   }
 

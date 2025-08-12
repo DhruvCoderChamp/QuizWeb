@@ -14,7 +14,7 @@ categoryId!: number;
     tests: any[] = [];
 paginatedTests: any[] = [];
 currentPage: number = 1;
-pageSize: number = 4;
+pageSize: number = 6;
 totalPages: number = 1;
 
   constructor(private route: ActivatedRoute, private router:Router , private testService: TestService) {}
@@ -28,7 +28,7 @@ totalPages: number = 1;
 loadTests(): void {
   this.testService.getTestsByCategory(this.categoryId).subscribe({
     next: (res) => {
-      this.tests = res;
+      this.tests = res.data;
       this.totalPages = Math.ceil(this.tests.length / this.pageSize);
       this.updatePaginatedTests();
       this.isLoading = false;

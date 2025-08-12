@@ -34,9 +34,9 @@ export class UserCurrentAffairsTestComponent implements OnInit {
 
   fetchTest(id: number): void {
     this.service.getById(id).subscribe({
-      next: (data) => {
-        this.testData = data;
-        this.selectedAnswers = new Array(data.questions.length).fill(-1); // no answer selected initially
+      next: (res : any) => {
+        this.testData = res.data;
+        this.selectedAnswers = new Array(res.data.questions.length).fill(-1); // no answer selected initially
         this.loading = false;
       },
       error: () => {

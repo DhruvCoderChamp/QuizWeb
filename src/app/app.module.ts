@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { SignupComponent } from './modules/auth/signup/signup.component';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './modules/auth/home/home.component';
 import { CreateTestComponent } from './modules/admin/components/create-test/create-test.component';
 import { NewsComponent } from './live/news/news/news.component';
 import { FormsModule } from '@angular/forms';
 import { GovJobComponent } from './live/gov-job/gov-job.component';
+import { JwtInterceptor } from './jwtinterceptor.interceptor';
 
 
 const routes: Routes = [
@@ -38,6 +39,13 @@ const routes: Routes = [
     RouterModule.forRoot(routes), 
     FormsModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass : JwtInterceptor, 
+      multi: true
+    }
+  ]
 })
 export class AppModule {}

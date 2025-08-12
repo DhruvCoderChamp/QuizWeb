@@ -23,7 +23,7 @@ export interface CurrentAffairs {
   providedIn: 'root',
 })
 export class CurrentAffairsService {
-  private apiUrl = 'http://localhost:8080/api/currentaffairs'; // Base URL, adjust if needed
+  private apiUrl = 'http://localhost:8080/api/currentAffairs'; // Base URL, adjust if needed
 
   constructor(private http: HttpClient) {}
 
