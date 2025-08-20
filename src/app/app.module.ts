@@ -15,6 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { GovJobComponent } from './live/gov-job/gov-job.component';
 import { JwtInterceptor } from './jwtinterceptor.interceptor';
 
+import { CommonDonutComponent } from './globalservices/common-donut/common-donut.component';
+
+
 
 const routes: Routes = [
     { path: 'register', component: SignupComponent },
@@ -30,14 +33,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent, HomeComponent, GovJobComponent],
+  declarations: [AppComponent, SignupComponent, LoginComponent, HomeComponent, GovJobComponent, ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
     RouterModule.forRoot(routes), 
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    CommonDonutComponent
   ],
   bootstrap: [AppComponent], 
   providers: [

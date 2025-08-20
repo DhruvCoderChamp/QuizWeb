@@ -9,6 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ExamInterfaceComponent } from './components/exam-interface/exam-interface.component';
 import { UserCurrentAffairsComponent } from './components/user-current-affairs/user-current-affairs.component';
 import { UserCurrentAffairsTestComponent } from './components/user-current-affairs-test/user-current-affairs-test.component';
+import { ResultPageComponent } from './components/result-page/result-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { UserCurrentAffairsTestComponent } from './components/user-current-affai
     ExamInterfaceComponent,
     UserCurrentAffairsComponent,
     UserCurrentAffairsTestComponent,
+    ResultPageComponent,
+    
 ]
 })
 export class UserModule { }

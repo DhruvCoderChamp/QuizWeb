@@ -1,0 +1,49 @@
+<div class="container">
+  <!-- Left Panel -->
+  <div class="left-panel">
+    <h2>📊 Result Overview</h2>
+
+    <div class="score-summary">
+      <div class="marking-scheme">
+        <strong>Marking Scheme:</strong>
+        <span class="mark-correct">✅ Correct: +1</span>,
+        <span class="mark-incorrect">❌ Incorrect: -0.25</span>,
+        <span class="mark-skipped">⏭️ Skipped: 0</span>
+      </div>
+      <div class="total-marks">
+        <strong>Total Marks Obtained:</strong>
+        <span class="highlight">{{ userMarks | number:'1.2-2' }}</span>
+      </div>
+    </div>
+
+    <app-common-donut
+      [segments]="donutSegments"
+      [colors]="donutColors"
+      [names]="names">
+    </app-common-donut>
+
+    <div class="values-list">
+      <span *ngFor="let value of donutSegments; let i = index"
+            [style.background]="donutColors[i]"
+            class="value-badge">
+        {{ names[i] }}: {{ (total > 0 ? ((value / total) * 100) : 0) | number:'1.0-2' }}%
+      </span>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel" *ngIf="questions?.length > 0">
+    <h3>📝 Questions</h3>
+    <div *ngFor="let question of questions; let idx = index" class="question-item">
+      <div class="question-header" (click)="question.expanded = !question.expanded">
+        <span>Question {{ idx + 1 }}: {{ question.questionText }}</span>
+        <span class="toggle-icon">{{ question.expanded ? '▲' : '▼' }}</span>
+      </div>
+      <div class="question-content" *ngIf="question.expanded">
+        <p><strong>Correct Option:</strong> {{ question.correctOption }}</p>
+        <p *ngIf="question.explaination"><strong>Explanation:</strong> {{ question.explaination }}</p>
+        <p *ngIf="!question.explaination"><em>No explanation provided</em></p>
+      </div>
+    </div>
+  </div>
+</div>

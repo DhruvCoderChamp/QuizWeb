@@ -25,30 +25,31 @@ export class ExamInterfaceComponent {
   timer: number = 0;
   interval: any;
   testTitle: string = '';
- 
+
 
   isGridView = true;  // default view mode
 
   languages = [
-    'English','Hindi','Telugu','Marathi','Bengali','Gujarati',
-    'Kannada','Tamil','Oriya','Malayalam'
+    'English', 'Hindi', 'Telugu', 'Marathi', 'Bengali', 'Gujarati',
+    'Kannada', 'Tamil', 'Oriya', 'Malayalam'
   ];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private testService: TestService
-  ) {}
+  ) { }
 
   // Only run when test starts
   startTest(): void {
     this.showInstructionsStep = 3;
     // Read testId now, as route is valid
     this.testId = Number(this.route.snapshot.paramMap.get('testId'));
-    this.enterFullScreen();
+    // this.requestCameraAccess();
+    // this.requestCameraAndMicAccess();
+    //this.enterFullScreen();
     this.loadTest();
-    this.requestCameraAccess();
-    this.requestCameraAndMicAccess();
+
   }
 
   toggleView() {
@@ -56,7 +57,7 @@ export class ExamInterfaceComponent {
   }
 
   loadTest(): void {
-    this.testService.getTestById(this.testId).subscribe((res : any) => {
+    this.testService.getTestById(this.testId).subscribe((res: any) => {
       this.questions = res.data.questions;
       this.testTitle = res.data.testDTO.title;
       this.timer = res.data.testDTO.time * 60;
@@ -124,26 +125,71 @@ export class ExamInterfaceComponent {
     return this.questions.filter((_, i) => !this.selectedAnswers[i]).length;
   }
 
+  // submitTest(): void {
+  //   const confirmSubmit = confirm(
+  //     'Are you sure you want to submit the test? You won’t be able to change your answers.'
+  //   );
+  //   if (!confirmSubmit) return;
+  //   this.router.navigate(['/user/test-result']);
+  //   this.showResults = true;
+  //   clearInterval(this.interval);
+
+  //   const resultData = this.questions.map((q, index) => ({
+  //     questionText: q.questionText,
+  //     selectedOption: this.selectedAnswers[index] || null,
+  //     correctOption: q.correctOption,
+  //     isCorrect: this.selectedAnswers[index] == null ? 'Skipped' : this.selectedAnswers[index] == q.correctOption ? 'Yes' : 'No',
+  //   }));
+  //   console.log(resultData)
+  //   this.router.navigate(['/user/test-result']);
+  // }
+
   submitTest(): void {
-    const confirmSubmit = confirm(
-      'Are you sure you want to submit the test? You won’t be able to change your answers.'
-    );
-    if (!confirmSubmit) return;
+    
+  const confirmSubmit = confirm(
+    'Are you sure you want to submit the test? You won’t be able to change your answers.'
+  );
+  debugger
+  if (!confirmSubmit) return;
 
-    this.showResults = true;
-    clearInterval(this.interval);
+  clearInterval(this.interval);
 
-    const resultData = this.questions.map((q, index) => ({
+  // Build result data in backend-compatible format
+  const resultData = {
+    
+    userId: Number(localStorage.getItem("userId")) || 1, // fetch userId dynamically later
+    attempts: this.questions.map((q, index) => ({
       questionText: q.questionText,
       selectedOption: this.selectedAnswers[index] || null,
       correctOption: q.correctOption,
-      isCorrect: this.selectedAnswers[index] === q.correctOption,
-    }));
+      isCorrect: this.selectedAnswers[index] == null 
+        ? 'Skipped' 
+        : this.selectedAnswers[index] === q.correctOption 
+          ? 'Yes' 
+          : 'No',
+    }))
+  };
 
-    this.router.navigate(['/user/progress', this.testId], {
-      state: { resultData, testTitle: this.testTitle },
-    });
-  }
+  // Call backend API
+  this.testService.saveTestResult(resultData).subscribe({
+    next: (savedResult) => {
+      console.log('Saved Test Result:', savedResult);
+
+      // Show results after backend confirmation
+      this.showResults = true;
+
+      // Navigate to result page AND pass saved result
+      this.router.navigate(['/user/test-result'], {
+        state: { result: savedResult , test : this.testId }
+      });
+    },
+    error: (err) => {
+      console.error('Error saving test result', err);
+      alert("Failed to save test result. Try again.");
+    }
+  });
+}
+
 
   get formattedTime(): string {
     const minutes = Math.floor(this.timer / 60);

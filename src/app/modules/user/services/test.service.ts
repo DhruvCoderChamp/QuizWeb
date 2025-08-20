@@ -25,5 +25,9 @@ export class TestService {
   getTestById(id: number): Observable<any> {
     return this.http.get(`${BASIC_URL}api/test/${id}`);
   }
-
+ 
+  saveTestResult(resultData: any): Observable<any> {
+    debugger
+    return this.http.post(`${BASIC_URL}api/testResults`, resultData);
+  }
 }

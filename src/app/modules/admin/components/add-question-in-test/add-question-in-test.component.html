@@ -40,6 +40,16 @@
       </mat-select>
     </mat-form-field>
 
+    <div>
+      <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Explanation</mat-label>
+        <textarea matInput formControlName="explaination" rows="6" required > 
+
+        </textarea>
+      </mat-form-field>
+    
+    </div>
+
     <div class="form-actions">
       <button mat-flat-button color="primary" type="submit" [disabled]="questionForm.invalid">
         ➕ Add Question
