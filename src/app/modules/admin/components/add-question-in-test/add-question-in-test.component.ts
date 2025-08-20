@@ -31,7 +31,8 @@ export class AddQuestionInTestComponent implements OnInit {
       optionB: ['', Validators.required],
       optionC: ['', Validators.required],
       optionD: ['', Validators.required],
-      correctOption: ['', Validators.required]
+      correctOption: ['', Validators.required],
+      explaination : ['', Validators.required]
     });
   }
 

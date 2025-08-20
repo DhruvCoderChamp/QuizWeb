@@ -1,0 +1,39 @@
+<div 
+  class="donut-container" 
+  [class.hovered]="hoveredIndex !== null"
+  (mouseleave)="hoveredIndex = null"
+>
+  <svg viewBox="0 0 140 140" width="240" height="240" class="donut">
+    <!-- Background Circle -->
+    <circle
+      cx="70" cy="70" r="56"
+      fill="transparent"
+      stroke="#eee"
+      stroke-width="28"
+    />
+
+    <!-- Donut segments -->
+    <ng-container *ngFor="let segment of getSegmentAngles(); let i = index">
+      <circle
+        class="donut-segment"
+        cx="70" cy="70" r="56"
+        fill="transparent"
+        [attr.stroke]="hoveredIndex === i ? getColor(i, true) : getColor(i)"
+        stroke-width="28"
+        [attr.stroke-dasharray]="(segment.value * circumference / 100 - 0.5) + ', ' + circumference"
+        [attr.stroke-dashoffset]="-(segment.offset * circumference / 100)"
+        transform="rotate(-90 70 70)"
+        (mouseenter)="hoveredIndex = i"
+        (mouseleave)="hoveredIndex = null"
+        [style.transform]="hoveredIndex === i ? 'scale(1)' : 'scale(1)'"
+        style="transform-origin: 70px 70px; transition: all 0.2s ease;"
+      />
+    </ng-container>
+  </svg>
+
+  <!-- Tooltip -->
+  <div class="tooltip" *ngIf="hoveredIndex !== null">
+    {{ names[hoveredIndex] || ('Segment ' + (hoveredIndex + 1)) }}:
+    {{ segments[hoveredIndex] }}
+  </div>
+</div>

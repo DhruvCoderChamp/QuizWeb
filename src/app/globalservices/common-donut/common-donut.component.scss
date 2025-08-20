@@ -1,0 +1,28 @@
+    .donut-container {
+    position: relative;
+    display: inline-block;
+    padding: 30px;  /* increased padding for more pop-out space */
+    }
+
+    .donut {
+    display: block;
+    margin: auto;
+    }
+
+    .donut-segment {
+    cursor: pointer;
+    }
+
+    .tooltip {
+    position: absolute;
+    top: 50%;
+    left: 105%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    pointer-events: none;
+    white-space: nowrap;
+    }
