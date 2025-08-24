@@ -2,7 +2,7 @@
   <mat-card class="create-card">
     <h2>Create New Test</h2>
 
-    <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="testForm" (ngSubmit)="onSubmit()" class="form-wrapper">
 
       <!-- Title -->
       <mat-form-field appearance="outline" class="full-width">
@@ -91,9 +91,11 @@
       </mat-form-field>
 
       <!-- Submit Button -->
-      <button mat-raised-button color="primary" type="submit" [disabled]="testForm.invalid">
-        Create Test
-      </button>
+      <div class="button-wrapper">
+        <button mat-raised-button color="primary" type="submit" [disabled]="testForm.invalid">
+          Create Test
+        </button>
+      </div>
 
       <!-- Success Message -->
       <p *ngIf="successMessage" class="success-msg">{{ successMessage }}</p>

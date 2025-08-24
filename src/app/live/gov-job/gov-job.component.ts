@@ -8,8 +8,8 @@ import { GovJobService, GovJobDTO } from './gov-job.service';
 })
 export class GovJobComponent implements OnInit {
   jobs: GovJobDTO[] = [];
-
-  constructor(private govJobService: GovJobService) {}
+  jobLink: any;
+  constructor(private govJobService: GovJobService) { }
 
   ngOnInit(): void {
     this.loadJobs();
@@ -17,8 +17,10 @@ export class GovJobComponent implements OnInit {
 
   loadJobs(): void {
     this.govJobService.getAllJobs().subscribe({
-      next: (res : any) => {
+      next: (res: any) => {
         this.jobs = res.data;
+        this.jobLink = res.data.jobLink;
+        console.log(this.jobs);
       },
       error: (error) => {
         console.error('Error loading jobs:', error);
@@ -26,9 +28,21 @@ export class GovJobComponent implements OnInit {
     });
   }
 
-  onJobTitleClick(job: GovJobDTO): void {
- 
-  window.location.href = 'https://ssc.gov.in/candidate-portal/one-time-registration/home-page';
+  onJobTitleClick(job: any): void {
+  if (job.jobLink) {
+    let url = job.jobLink.trim();
 
+    // If it doesn't start with http:// or https://, add https://
+    if (!/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;
+    }
+
+    console.log('Opening:', url);
+    window.open(url, '_blank');
+  } else {
+    alert('No job link available.');
   }
+}
+
+
 }
