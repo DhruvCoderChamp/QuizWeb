@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   selectedCategoryName: string = '';
   isLoading = false;
 
-  constructor(private adminService: AdminService, private router: Router,private snackBar:MatSnackBar) {}
+  constructor(private adminService: AdminService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -54,32 +54,39 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/admin/add-question', id]);
   }
 
-  
-deleteTest(id: number) {
-  if (confirm('Are you sure you want to delete this test?')) {
-    this.adminService.deleteTest(id).subscribe({
-      next: (res) => {
-        console.log('✅ Deleted:', res);
-        this.loadTestsByCategory(this.selectedCategoryId!); // 🔄 Refresh test list
-      },
-      error: (err) => {
-        console.error('❌ Failed:', err);
-        alert('❌ Failed to delete test.');
-      }
-    });
-  }
-}
 
+  deleteTest(id: number): void {
+  const confirmed = confirm('Are you sure you want to delete this test?');
 
+  if (!confirmed) return;
 
-getAllTests() {
-  this.adminService.getAllTests().subscribe({
+  this.adminService.deleteTest(id).subscribe({
     next: (res) => {
-      this.tests = res;
+      console.log('✅ Deleted:', res);
+
+      // Reload tests. If no category is selected, load all.
+      if (this.selectedCategoryId != null) {
+        this.loadTestsByCategory(this.selectedCategoryId);
+      } 
     },
-    error: (err) => console.error(err)
+    error: (err) => {
+      console.error('❌ Failed:', err);
+      alert('❌ Failed to delete test.');
+    }
   });
 }
+
+
+
+
+  getAllTests() {
+    this.adminService.getAllTests().subscribe({
+      next: (res) => {
+        this.tests = res;
+      },
+      error: (err) => console.error(err)
+    });
+  }
 
 
 }

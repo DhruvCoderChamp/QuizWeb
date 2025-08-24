@@ -22,56 +22,78 @@ export class CreateTestComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initializeForm();
+    this.loadCategories();
+  }
+
+  initializeForm(): void {
     this.testForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       time: [30, [Validators.required, Validators.min(1)]],
-      totalQuestions: [0, Validators.required],
-      totalMarks: [0, Validators.required],
+      totalQuestions: [0, [Validators.required, Validators.min(1)]],
+      totalMarks: [0, [Validators.required, Validators.min(1)]],
       difficulty: ['EASY', Validators.required],
-      languages: [[], Validators.required], // now an array
+      languages: [[], Validators.required],
       categoryId: ['', Validators.required]
-    });
-
-    this.adminService.getAllCategories().subscribe({
-      next: (res) => this.categories = res,
-      error: (err) => console.error('Failed to load categories', err)
     });
   }
 
-  onSubmit() {
-    if (this.testForm.valid) {
-      const formValue = this.testForm.value;
+  loadCategories(): void {
+    this.adminService.getAllCategories().subscribe({
+      next: (res) => {
+        console.log('res', res)
+        this.categories = res.data;
+      },
+      error: (err) => {
+        console.error('Failed to load categories', err);
+        // this.snackBar.open('⚠️ Could not load categories', 'Close', { duration: 3000 });
+      }
+    });
+  }
 
-      const testData = {
-        title: formValue.title,
-        description: formValue.description,
-        time: formValue.time,
-        totalQuestions: formValue.totalQuestions,
-        totalMarks: formValue.totalMarks,
-        difficulty: formValue.difficulty,
-        languages: formValue.languages,
-        categoryId: formValue.categoryId
-      };
-
-      this.adminService.createTest(testData).subscribe({
-        next: () => {
-          this.snackBar.open('✅ Test created!', 'Close', { duration: 3000 });
-          this.testForm.reset({
-            time: 0,
-            difficulty: 'EASY',
-            languages: [],
-            totalQuestions: 0,
-            totalMarks: 0
-          });
-          this.router.navigate(['/admin/dashboard']);
-
-        },
-        error: () => {
-          this.snackBar.open('❌ Failed to create test', 'Close', { duration: 3000 });
-        }
-      });
+  onSubmit(): void {
+    if (this.testForm.invalid) {
+      this.testForm.markAllAsTouched();
+      return;
     }
+
+    const formValue = this.testForm.value;
+
+    const testData = {
+      title: formValue.title,
+      description: formValue.description,
+      time: formValue.time,
+      totalQuestions: formValue.totalQuestions,
+      totalMarks: formValue.totalMarks,
+      difficulty: formValue.difficulty,
+      languages: formValue.languages,
+      categoryId: formValue.categoryId
+    };
+
+    this.adminService.createTest(testData).subscribe({
+      next: () => {
+        this.snackBar.open('✅ Test created!', 'Close', { duration: 3000 });
+
+        // Reset form with defaults
+        this.testForm.reset({
+          title: '',
+          description: '',
+          time: 30,
+          totalQuestions: 0,
+          totalMarks: 0,
+          difficulty: 'EASY',
+          languages: [],
+          categoryId: ''
+        });
+
+        this.router.navigate(['/admin/dashboard']);
+      },
+      error: (err) => {
+        console.error('Error creating test:', err);
+        this.snackBar.open('❌ Failed to create test', 'Close', { duration: 3000 });
+      }
+    });
   }
 }
