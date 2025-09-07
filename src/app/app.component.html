@@ -1,51 +1,51 @@
-<mat-toolbar color="primary" class="main-header light-glass">
-  <span class="logo" routerLink="/">
+<mat-toolbar color="primary" class="main-header light-glass sticky top-0 w-full min-h-16 px-3 md:px-6 backdrop-blur-md bg-blue-500/60 shadow-md border-b border-white/20 z-50">
+  <span class="logo flex items-center text-white text-lg md:text-xl font-semibold gap-2 hover:text-amber-300 cursor-pointer" routerLink="/">
     <mat-icon class="logo-icon">quiz</mat-icon> Quiz App
   </span>
-  <span class="spacer"></span>
+  <span class="spacer flex-1"></span>
 
   <ng-container *ngIf="user; else guestButtons">
     <ng-container *ngIf="isAdminLoggedIn; else userNav">
-      <button mat-button routerLink="/admin/dashboard">Dashboard</button>
-      <button mat-button routerLink="/admin/create-test">Create Test</button>
-      <button mat-button routerLink="/admin/latest-job">Latest Jobs</button>
-      <button mat-button routerLink="/admin/current-affairs-view">Current Affairs</button>
-      <button mat-button routerLink="/admin/create-category">Create Category</button>
-      <button mat-button routerLink="/admin/results">View Results</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/dashboard">Dashboard</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/create-test">Create Test</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/latest-job">Latest Jobs</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/current-affairs-view">Current Affairs</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/create-category">Create Category</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/admin/results">View Results</button>
     </ng-container>
     <ng-template #userNav>
-      <button mat-button routerLink="user/dashboard">Dashboard</button>
-      <button mat-button routerLink="govJob">Government Job</button>
-      <button mat-button routerLink="/quiz-section">Quiz Sections</button>
-      <button mat-button routerLink="user/user-current-affair">Current Affairs</button>
-      <button mat-button routerLink="news">News</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="user/dashboard">Dashboard</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="govJob">Government Job</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="/quiz-section">Quiz Sections</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="user/user-current-affair">Current Affairs</button>
+      <button mat-button class="ml-2 md:ml-3 text-sm md:text-base rounded-full" routerLink="news">News</button>
     </ng-template>
-    <button mat-stroked-button color="accent" class="logout-btn" (click)="logout()">
+    <button mat-stroked-button color="accent" class="logout-btn ml-3 rounded-full" (click)="logout()">
       <mat-icon>logout</mat-icon> Logout
     </button>
   </ng-container>
 
   <ng-template #guestButtons>
-    <a mat-stroked-button color="primary" routerLink="/register" class="header-btn">Sign Up</a>
-    <a mat-flat-button color="accent" routerLink="/login" class="header-btn">Login</a>
+    <a mat-stroked-button color="primary" routerLink="/register" class="header-btn ml-2 md:ml-3 text-sm md:text-base rounded-full">Sign Up</a>
+    <a mat-flat-button color="accent" routerLink="/login" class="header-btn ml-2 md:ml-3 text-sm md:text-base rounded-full">Login</a>
   </ng-template>
 </mat-toolbar>
 
-<main class="content content-light">
+<main class="content content-light w-full max-w-screen-2xl mx-auto mt-2 md:mt-4 px-4 md:px-6 py-6 md:py-8 bg-white/95 rounded-t-xl shadow">
   <router-outlet></router-outlet>
 </main>
 
-<footer  class="footer light-glass">
-  <div class="footer-left">
+<footer  class="footer light-glass w-full px-4 md:px-16 py-4 bg-blue-500/60 text-white flex flex-col md:flex-row gap-3 md:gap-2 items-start md:items-center justify-between border-t border-white/20">
+  <div class="footer-left flex items-center gap-1 whitespace-nowrap">
     © 2025 <span class="footer-logo">Quiz App</span>. All rights reserved.
   </div>
   <div class="footer-right">
-    <form class="subscribe-form" >
-      <mat-form-field appearance="outline" class="subscribe-field">
+    <form class="subscribe-form flex items-center gap-2 flex-wrap md:flex-nowrap w-full" >
+      <mat-form-field appearance="outline" class="subscribe-field min-w-[140px] md:min-w-[180px] w-full md:w-auto">
         <mat-label>Email</mat-label>
         <input matInput placeholder="Subscribe with email" required type="email" name="email">
       </mat-form-field>
-      <button mat-raised-button color="primary" class="subscribe-btn">Subscribe</button>
+      <button mat-raised-button color="primary" class="subscribe-btn rounded-full font-medium shrink-0">Subscribe</button>
     </form>
   </div>
 </footer>

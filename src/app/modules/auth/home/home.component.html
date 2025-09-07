@@ -1,25 +1,25 @@
-<div class="home-container">
+<div class="home-container flex flex-col gap-10 md:gap-12 py-6 md:py-10 bg-gradient-to-br from-sky-50 to-indigo-50">
 
   <!-- Hero Banner -->
-  <section class="hero-banner">
-    <img src="assets/home banner.png" alt="Home Banner" class="banner-img" />
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Government Exam Guide</h1>
-      <p>Start Your Journey With Free Videos, Test Series, Quizzes, Notes & More</p>
-      <button mat-raised-button color="accent" routerLink="/register">Get Started</button>
+  <section class="hero-banner relative h-[68vh] min-h-[340px] rounded-2xl overflow-hidden mx-[18px] shadow-xl bg-blue-50 flex items-center justify-center">
+    <img src="assets/home banner.png" alt="Home Banner" class="banner-img absolute inset-0 w-full h-full object-cover z-[1]" />
+    <div class="overlay absolute inset-0 z-[2] opacity-85 bg-gradient-to-br from-blue-500/30 via-indigo-700/40 to-blue-700/20"></div>
+    <div class="hero-content relative z-[3] m-auto p-6 md:p-8 bg-white/80 rounded-xl max-w-[540px] shadow-xl text-center">
+      <h1 class="text-2xl md:text-4xl font-extrabold text-slate-800 mb-2">Government Exam Guide</h1>
+      <p class="text-base md:text-lg text-slate-600 mb-4">Start Your Journey With Free Videos, Test Series, Quizzes, Notes & More</p>
+      <button mat-raised-button color="accent" routerLink="/register" class="px-6 py-3 font-bold rounded-md">Get Started</button>
     </div>
   </section>
 
   <!-- Upcoming Exams -->
-  <section class="exam-highlights section-card">
-    <h2>Upcoming Exams</h2>
-    <div class="exam-grid">
-      <div class="exam-card">
+  <section class="exam-highlights section-card bg-white rounded-xl shadow-md mx-[18px] px-6 py-7">
+    <h2 class="text-xl md:text-2xl font-bold text-blue-900 mb-4">Upcoming Exams</h2>
+    <div class="exam-grid flex flex-wrap justify-center gap-5">
+      <div class="exam-card bg-gradient-to-r from-indigo-300 to-blue-50 text-blue-900 rounded-lg px-8 py-4 min-w-[205px] text-center text-lg shadow-md my-2">
         <strong>UPPSC</strong>
         <span>Exam Date: 2nd July 2025</span>
       </div>
-      <div class="exam-card">
+      <div class="exam-card bg-gradient-to-r from-indigo-300 to-blue-50 text-blue-900 rounded-lg px-8 py-4 min-w-[205px] text-center text-lg shadow-md my-2">
         <strong>TNPSC Group IV</strong>
         <span>Exam Date: 12th July 2025</span>
       </div>
@@ -27,45 +27,45 @@
   </section>
 
   <!-- Free Pass -->
-  <section class="free-pass section-card">
-    <div class="pass-content">
-      <img src="assets/Free Pass.png" alt="Free Pass" class="pass-img" />
-      <div class="features">
-        <h2>Get Access to Unlimited Tests — Absolutely Free!</h2>
-        <ul>
-          <li>500+ Exams</li>
-          <li>50,000+ Mock Tests</li>
-          <li>10,000+ Prev Year Papers</li>
-          <li>Unlimited Reattempts</li>
-          <li>Live Tests / Quizzes</li>
+  <section class="free-pass section-card bg-gradient-to-r from-sky-50 to-blue-200 rounded-xl shadow-md mx-[18px] px-6 py-7">
+    <div class="pass-content flex items-center justify-center gap-10 flex-wrap">
+      <img src="assets/Free Pass.png" alt="Free Pass" class="pass-img w-[210px] min-w-[120px] rounded-lg shadow-lg" />
+      <div class="features flex-1 min-w-[220px]">
+        <h2 class="text-lg md:text-xl font-bold text-blue-800 mb-2">Get Access to Unlimited Tests — Absolutely Free!</h2>
+        <ul class="list-none pl-0 mb-4 text-slate-700">
+          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">500+ Exams</li>
+          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">50,000+ Mock Tests</li>
+          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">10,000+ Prev Year Papers</li>
+          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">Unlimited Reattempts</li>
+          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">Live Tests / Quizzes</li>
         </ul>
-        <button mat-stroked-button color="accent">Unlock Free Access</button>
+        <button mat-stroked-button color="accent" class="px-6 py-2 font-semibold">Unlock Free Access</button>
       </div>
     </div>
   </section>
 
-<div class="features-wrapper">
-  <div class="features-header">
+<div class="features-wrapper p-5">
+  <div class="features-header flex items-center gap-3 mb-5">
     <svg class="header-icon" viewBox="0 0 24 24">
       <path d="M4 4h16v2H4V4zm0 4h12v2H4V8zm0 4h16v2H4v-2zm0 4h12v2H4v-2z"/>
     </svg>
-    <h2>Key Features</h2>
+    <h2 class="text-2xl text-sky-600">Key Features</h2>
   </div>
 
-  <div class="feature-row">
-    <div class="feature-item">
+  <div class="feature-row flex flex-wrap gap-5 justify-between">
+    <div class="feature-item flex-1 basis-[220px] bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm text-slate-800">
       <h3>Most Updated Questions</h3>
       <p>Get the latest and most important aptitude questions for Bank, SSC, and Railways exams.</p>
     </div>
-    <div class="feature-item">
+    <div class="feature-item flex-1 basis-[220px] bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm text-slate-800">
       <h3>Quality Explanation</h3>
       <p>Access detailed solutions for every question with examples and image illustrations.</p>
     </div>
-    <div class="feature-item">
+    <div class="feature-item flex-1 basis-[220px] bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm text-slate-800">
       <h3>Questions by Toppers</h3>
       <p>Attempt quizzes developed by successful candidates in Quant, Reasoning, and Current Affairs.</p>
     </div>
-    <div class="feature-item">
+    <div class="feature-item flex-1 basis-[220px] bg-blue-50 border border-blue-200 rounded-lg p-4 shadow-sm text-slate-800">
       <h3>Ask and Discuss</h3>
       <p>Join discussions on aptitude questions, doubt-clearing, shortcut methods, and more.</p>
     </div>
@@ -74,20 +74,20 @@
 
 
   <!-- Testimonials -->
-  <section class="testimonial-section section-card">
-    <h2 class="section-title">What Our Aspirants Say</h2>
-    <div class="testimonial-slider">
+  <section class="testimonial-section section-card text-center bg-gradient-to-r from-blue-50 to-indigo-100 pb-7 rounded-xl shadow-md mx-[18px] px-6 py-7">
+    <h2 class="section-title text-xl md:text-2xl text-blue-900 mb-6 font-bold">What Our Aspirants Say</h2>
+    <div class="testimonial-slider flex gap-5 overflow-x-auto pb-3 max-w-full scroll-smooth">
       <mat-card *ngFor="let testimonial of testimonials; let i = index"
-                class="testimonial-card"
+                class="testimonial-card relative opacity-100 transform-none w-[300px] shrink-0 shadow-md p-6 bg-white rounded-lg text-center"
                 [class.active]="i === currentSlide">
         <img [src]="testimonial.avatar" alt="User" class="avatar" />
         <h3>{{ testimonial.name }}</h3>
         <p class="quote">"{{ testimonial.message }}"</p>
       </mat-card>
     </div>
-    <div class="slider-controls">
-      <button mat-icon-button (click)="prevSlide()"><mat-icon>chevron_left</mat-icon></button>
-      <button mat-icon-button (click)="nextSlide()"><mat-icon>chevron_right</mat-icon></button>
+    <div class="slider-controls mt-6 flex justify-center gap-2">
+      <button mat-icon-button class="bg-slate-100 text-sky-700 hover:bg-sky-200" (click)="prevSlide()"><mat-icon>chevron_left</mat-icon></button>
+      <button mat-icon-button class="bg-slate-100 text-sky-700 hover:bg-sky-200" (click)="nextSlide()"><mat-icon>chevron_right</mat-icon></button>
     </div>
   </section>
 
