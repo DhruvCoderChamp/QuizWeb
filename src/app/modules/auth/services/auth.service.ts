@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LocalstorageService } from './localstorage.service';
 
-const BASIC_URL = "http://localhost:8080/";
+import { environment } from 'src/assets/enviornment';
+
+
+const BASIC_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-const BASIC_URL = "http://localhost:8080/";
+import { environment } from 'src/assets/enviornment';
+
+
+const BASIC_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
