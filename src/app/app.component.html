@@ -1,7 +1,15 @@
-<mat-toolbar color="primary" class="main-header light-glass sticky top-0 w-full min-h-16 px-3 md:px-6 backdrop-blur-md bg-blue-500/60 shadow-md border-b border-white/20 z-50">
-  <span class="logo flex items-center text-white text-lg md:text-xl font-semibold gap-2 hover:text-amber-300 cursor-pointer" routerLink="/">
-    <mat-icon class="logo-icon">quiz</mat-icon> Quiz App
-  </span>
+<mat-toolbar color="primary" class="main-header light-glass sticky top-0 w-full min-h-16 px-3 md:px-6 backdrop-blur-md bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 shadow-lg border-b border-white/20 z-50">
+  <div class="logo-container flex items-center gap-3">
+    <div class="logo-wrapper flex items-center text-white text-lg md:text-xl font-bold gap-2 hover:text-amber-300 cursor-pointer transition-all duration-300" routerLink="/">
+      <div class="logo-icon-container bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full p-2 shadow-lg">
+        <mat-icon class="logo-icon text-white">psychology</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">U Feel</span>
+        <span class="tagline text-xs md:text-sm text-blue-100 block -mt-1">Quiz Platform</span>
+      </div>
+    </div>
+  </div>
   <span class="spacer flex-1"></span>
 
   <ng-container *ngIf="user; else guestButtons">
@@ -35,17 +43,26 @@
   <router-outlet></router-outlet>
 </main>
 
-<footer  class="footer light-glass w-full px-4 md:px-16 py-4 bg-blue-500/60 text-white flex flex-col md:flex-row gap-3 md:gap-2 items-start md:items-center justify-between border-t border-white/20">
-  <div class="footer-left flex items-center gap-1 whitespace-nowrap">
-    © 2025 <span class="footer-logo">Quiz App</span>. All rights reserved.
+<footer class="footer light-glass w-full px-4 md:px-16 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white flex flex-col md:flex-row gap-4 md:gap-6 items-start md:items-center justify-between border-t border-white/20">
+  <div class="footer-left flex items-center gap-2 whitespace-nowrap">
+    <div class="footer-logo-container flex items-center gap-2">
+      <div class="footer-logo-icon w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+        <mat-icon class="text-white text-sm">psychology</mat-icon>
+      </div>
+      <span class="footer-logo text-lg font-bold">U Feel</span>
+    </div>
+    <span class="text-sm text-blue-100">© 2025 All rights reserved.</span>
   </div>
   <div class="footer-right">
-    <form class="subscribe-form flex items-center gap-2 flex-wrap md:flex-nowrap w-full" >
-      <mat-form-field appearance="outline" class="subscribe-field min-w-[140px] md:min-w-[180px] w-full md:w-auto">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Subscribe with email" required type="email" name="email">
+    <form class="subscribe-form flex items-center gap-3 flex-wrap md:flex-nowrap w-full">
+      <mat-form-field appearance="outline" class="subscribe-field min-w-[160px] md:min-w-[200px] w-full md:w-auto">
+        <mat-label class="text-blue-100">Email</mat-label>
+        <input matInput placeholder="Subscribe for updates" required type="email" name="email" class="text-white">
       </mat-form-field>
-      <button mat-raised-button color="primary" class="subscribe-btn rounded-full font-medium shrink-0">Subscribe</button>
+      <button mat-raised-button color="accent" class="subscribe-btn rounded-full font-semibold shrink-0 bg-gradient-to-r from-yellow-400 to-orange-500 text-white hover:from-yellow-500 hover:to-orange-600">
+        <mat-icon class="mr-1 text-sm">send</mat-icon>
+        Subscribe
+      </button>
     </form>
   </div>
 </footer>
