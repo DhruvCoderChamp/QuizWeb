@@ -213,4 +213,28 @@ mat-card-actions {
   .start-button {
     width: 100%;
   }
+  .status-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f2937; /* Tailwind's gray-800 */
+}
+
+.status-container h1 {
+  font-size: 3rem; /* Bigger headline */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.status-container h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #4b5563; /* Tailwind's gray-600 */
+}
+
+
 }
