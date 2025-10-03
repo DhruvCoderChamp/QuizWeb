@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/assets/enviornment';
 
+
+const BASIC_URL = environment.apiUrl;
 export interface Question {
   text: string;
   options: string[];
@@ -23,7 +26,7 @@ export interface CurrentAffairs {
   providedIn: 'root',
 })
 export class CurrentAffairsService {
-  private apiUrl = 'http://localhost:8080/api/currentAffairs'; // Base URL, adjust if needed
+  private apiUrl = BASIC_URL + 'api/currentAffairs'; // Base URL, adjust if needed
 
   constructor(private http: HttpClient) {}
 

@@ -1,43 +1,76 @@
 <div class="test-grid-container">
-  <div class="test-banner">
-    <h1>✨ Challenge Yourself!</h1>
-    <p>Take a mock test to sharpen your skills and track your progress.</p>
+  <div *ngIf="testExists">
+    <div class="test-banner">
+      <h1>✨ Challenge Yourself!</h1>
+      <p>Take a mock test to sharpen your skills and track your progress.</p>
+    </div>
+
+    <h2 class="section-title">
+      📘 Available Tests in <span class="highlight">{{ categoryName }}</span>
+    </h2>
+
+    <div class="test-grid">
+      <mat-card class="test-card" *ngFor="let test of paginatedTests">
+        <mat-card-header>
+          <div mat-card-avatar class="test-avatar">🖍️</div>
+          <mat-card-title>{{ test.title }}</mat-card-title>
+          <mat-card-subtitle>{{ test.description }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="meta-grid">
+            <div><strong>🕒 Time:</strong> {{ test.time }} mins</div>
+            <div>
+              <strong>❓ Questions:</strong> {{ test.totalQuestions || 0 }}
+            </div>
+            <div><strong>🧶 Marks:</strong> {{ test.totalMarks || 0 }}</div>
+            <div><strong>📊 Difficulty:</strong> {{ test.difficulty }}</div>
+            <div>
+              <strong>🌐 Languages:</strong>
+              {{ formatLanguages(test.languages) }}
+            </div>
+            <div>
+              <strong>👥 Attempted:</strong>
+              {{ test.attemptedCount || 0 }} users
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button
+            mat-raised-button
+            class="start-button"
+            (click)="startTest(test.id)"
+          >
+            🌟 Start Test
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button
+        mat-stroked-button
+        color="accent"
+        (click)="prevPage()"
+        [disabled]="currentPage === 1"
+      >
+        ⬅️ Prev
+      </button>
+      <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button
+        mat-stroked-button
+        color="accent"
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages"
+      >
+        ➡️ Next
+      </button>
+    </div>
   </div>
-
-  <h2 class="section-title">📘 Available Tests in <span class="highlight">{{ categoryName }}</span>
-  </h2>
-
-  <div class="test-grid">
-    <mat-card class="test-card" *ngFor="let test of paginatedTests">
-      <mat-card-header>
-        <div mat-card-avatar class="test-avatar"> 🖍️ </div>
-        <mat-card-title>{{ test.title }}</mat-card-title>
-        <mat-card-subtitle>{{ test.description }}</mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-content>
-        <div class="meta-grid">
-          <div><strong>🕒 Time:</strong> {{ test.time }} mins</div>
-          <div><strong>❓ Questions:</strong> {{ test.totalQuestions || 0 }}</div>
-          <div><strong>🧶 Marks:</strong> {{ test.totalMarks || 0 }}</div>
-          <div><strong>📊 Difficulty:</strong> {{ test.difficulty }}</div>
-          <div><strong>🌐 Languages:</strong> {{ formatLanguages(test.languages) }}</div>
-          <div><strong>👥 Attempted:</strong> {{ test.attemptedCount || 0 }} users</div>
-        </div>
-      </mat-card-content>
-
-      <mat-card-actions align="end">
-        <button mat-raised-button class="start-button" (click)="startTest(test.id)">
-          🌟 Start Test
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
-  <!-- Pagination Controls -->
-  <div class="pagination-controls">
-    <button mat-stroked-button color="accent" (click)="prevPage()" [disabled]="currentPage === 1">⬅️ Prev</button>
-    <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
-    <button mat-stroked-button color="accent" (click)="nextPage()" [disabled]="currentPage === totalPages">➡️ Next</button>
+  <div class="status-container" *ngIf="!testExists">
+    <h1>🚧 We are working on it... 🛠️</h1>
+    <h2>🧪 New test will appear soon! ⏳</h2>
   </div>
 </div>

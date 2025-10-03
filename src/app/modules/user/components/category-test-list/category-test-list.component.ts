@@ -16,6 +16,7 @@ paginatedTests: any[] = [];
 currentPage: number = 1;
 pageSize: number = 6;
 totalPages: number = 1;
+testExists : boolean = true;
 
   constructor(private route: ActivatedRoute, private router:Router , private testService: TestService) {}
 
@@ -29,9 +30,14 @@ loadTests(): void {
   this.testService.getTestsByCategory(this.categoryId).subscribe({
     next: (res) => {
       this.tests = res.data;
-      this.totalPages = Math.ceil(this.tests.length / this.pageSize);
+      if (this.tests.length>0){
+        this.totalPages = Math.ceil(this.tests.length / this.pageSize);
       this.updatePaginatedTests();
       this.isLoading = false;
+      } else {
+        this.testExists = false;
+      }
+      
     },
     error: (err) => {
       console.error('Failed to load tests', err);

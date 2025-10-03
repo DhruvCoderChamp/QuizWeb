@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/assets/enviornment';
 
+
+const BASIC_URL = environment.apiUrl;
 export interface GovJobDTO {
   id?: number;
   jobName: string;
@@ -16,7 +19,7 @@ export interface GovJobDTO {
   providedIn: 'root'
 })
 export class GovJobService {
-  private apiUrl = 'http://localhost:8080/api/govjobs'; // Adjust if port/path differs
+  private apiUrl = BASIC_URL+ 'api/govjobs'; // Adjust if port/path differs
 
   constructor(private http: HttpClient) { }
 
