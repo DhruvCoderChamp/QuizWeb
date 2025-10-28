@@ -1,45 +1,160 @@
 <div class="home-container flex flex-col gap-10 md:gap-12 py-6 md:py-10 bg-gradient-to-br from-sky-50 to-indigo-50">
 
   <!-- Hero Banner -->
-  <section class="hero-banner relative h-[68vh] min-h-[340px] rounded-2xl overflow-hidden mx-[18px] shadow-xl bg-blue-50 flex items-center justify-center">
-    <img src="assets/home banner.png" alt="Home Banner" class="banner-img absolute inset-0 w-full h-full object-cover z-[1]" />
-    <div class="overlay absolute inset-0 z-[2] opacity-85 bg-gradient-to-br from-blue-500/30 via-indigo-700/40 to-blue-700/20"></div>
-    <div class="hero-content relative z-[3] m-auto p-6 md:p-8 bg-white/80 rounded-xl max-w-[540px] shadow-xl text-center">
-      <h1 class="text-2xl md:text-4xl font-extrabold text-slate-800 mb-2">Government Exam Guide</h1>
-      <p class="text-base md:text-lg text-slate-600 mb-4">Start Your Journey With Free Videos, Test Series, Quizzes, Notes & More</p>
-      <button mat-raised-button color="accent" routerLink="/register" class="px-6 py-3 font-bold rounded-md">Get Started</button>
+  <section class="hero-banner relative h-[75vh] min-h-[400px] rounded-3xl overflow-hidden mx-[18px] shadow-2xl bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 flex items-center justify-center">
+    <div class="hero-background absolute inset-0 z-[1]">
+      <div class="geometric-shapes absolute inset-0">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+      </div>
+      <img src="assets/home banner.png" alt="Home Banner" class="banner-img absolute inset-0 w-full h-full object-cover opacity-60" />
+    </div>
+    <div class="overlay absolute inset-0 z-[2] bg-gradient-to-br from-blue-600/20 via-purple-600/30 to-indigo-600/25"></div>
+    <div class="hero-content relative z-[3] m-auto p-8 md:p-12 bg-white/90 backdrop-blur-sm rounded-2xl max-w-[600px] shadow-2xl text-center border border-white/20">
+      <div class="hero-badge mb-4">
+        <span class="badge-text bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+          🎯 Trusted by 50,000+ Students
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black text-slate-800 mb-4 leading-tight">
+        Master Your 
+        <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">Government Exams</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-[500px] mx-auto">
+        Join thousands of successful candidates with our comprehensive test series, expert guidance, and personalized learning experience.
+      </p>
+      <div class="hero-actions flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button mat-raised-button color="primary" routerLink="/register" class="hero-btn-primary px-8 py-4 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+          <mat-icon class="mr-2">rocket_launch</mat-icon>
+          Start Free Trial
+        </button>
+        <button mat-stroked-button color="primary" class="hero-btn-secondary px-8 py-4 text-lg font-semibold rounded-xl border-2 hover:bg-blue-50 transition-all duration-300">
+          <mat-icon class="mr-2">play_circle</mat-icon>
+          Watch Demo
+        </button>
+      </div>
+      <div class="hero-stats mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-600">
+        <div class="stat-item flex items-center gap-2">
+          <mat-icon class="text-green-500">verified</mat-icon>
+          <span>100% Free</span>
+        </div>
+        <div class="stat-item flex items-center gap-2">
+          <mat-icon class="text-blue-500">schedule</mat-icon>
+          <span>24/7 Access</span>
+        </div>
+        <div class="stat-item flex items-center gap-2">
+          <mat-icon class="text-purple-500">trending_up</mat-icon>
+          <span>Proven Results</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Upcoming Exams -->
-  <section class="exam-highlights section-card bg-white rounded-xl shadow-md mx-[18px] px-6 py-7">
-    <h2 class="text-xl md:text-2xl font-bold text-blue-900 mb-4">Upcoming Exams</h2>
-    <div class="exam-grid flex flex-wrap justify-center gap-5">
-      <div class="exam-card bg-gradient-to-r from-indigo-300 to-blue-50 text-blue-900 rounded-lg px-8 py-4 min-w-[205px] text-center text-lg shadow-md my-2">
-        <strong>UPPSC</strong>
-        <span>Exam Date: 2nd July 2025</span>
+  <section class="exam-highlights section-card bg-white rounded-2xl shadow-lg mx-[18px] px-8 py-8 border border-gray-100">
+    <div class="section-header text-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-2">Upcoming Exams</h2>
+      <p class="text-slate-600 text-lg">Stay ahead with our comprehensive exam preparation</p>
+    </div>
+    <div class="exam-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="exam-card group bg-gradient-to-br from-blue-50 to-indigo-100 border border-blue-200 rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <div class="exam-icon mb-4">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto">
+            <mat-icon class="text-white text-2xl">school</mat-icon>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-2">UPPSC</h3>
+        <p class="text-slate-600 mb-3">Uttar Pradesh Public Service Commission</p>
+        <div class="exam-date bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+          📅 2nd July 2025
+        </div>
       </div>
-      <div class="exam-card bg-gradient-to-r from-indigo-300 to-blue-50 text-blue-900 rounded-lg px-8 py-4 min-w-[205px] text-center text-lg shadow-md my-2">
-        <strong>TNPSC Group IV</strong>
-        <span>Exam Date: 12th July 2025</span>
+      <div class="exam-card group bg-gradient-to-br from-purple-50 to-pink-100 border border-purple-200 rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <div class="exam-icon mb-4">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto">
+            <mat-icon class="text-white text-2xl">work</mat-icon>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-2">TNPSC Group IV</h3>
+        <p class="text-slate-600 mb-3">Tamil Nadu Public Service Commission</p>
+        <div class="exam-date bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+          📅 12th July 2025
+        </div>
+      </div>
+      <div class="exam-card group bg-gradient-to-br from-green-50 to-emerald-100 border border-green-200 rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <div class="exam-icon mb-4">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto">
+            <mat-icon class="text-white text-2xl">account_balance</mat-icon>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold text-slate-800 mb-2">SSC CGL</h3>
+        <p class="text-slate-600 mb-3">Staff Selection Commission</p>
+        <div class="exam-date bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+          📅 15th August 2025
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Free Pass -->
-  <section class="free-pass section-card bg-gradient-to-r from-sky-50 to-blue-200 rounded-xl shadow-md mx-[18px] px-6 py-7">
-    <div class="pass-content flex items-center justify-center gap-10 flex-wrap">
-      <img src="assets/Free Pass.png" alt="Free Pass" class="pass-img w-[210px] min-w-[120px] rounded-lg shadow-lg" />
-      <div class="features flex-1 min-w-[220px]">
-        <h2 class="text-lg md:text-xl font-bold text-blue-800 mb-2">Get Access to Unlimited Tests — Absolutely Free!</h2>
-        <ul class="list-none pl-0 mb-4 text-slate-700">
-          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">500+ Exams</li>
-          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">50,000+ Mock Tests</li>
-          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">10,000+ Prev Year Papers</li>
-          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">Unlimited Reattempts</li>
-          <li class="mb-2 font-medium relative pl-4 before:content-['✓'] before:text-sky-600 before:absolute before:left-0">Live Tests / Quizzes</li>
-        </ul>
-        <button mat-stroked-button color="accent" class="px-6 py-2 font-semibold">Unlock Free Access</button>
+  <section class="free-pass section-card bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl shadow-lg mx-[18px] px-8 py-10 border border-blue-100">
+    <div class="pass-content flex items-center justify-center gap-12 flex-wrap">
+      <div class="pass-image-container relative">
+        <img src="assets/Free Pass.png" alt="Free Pass" class="pass-img w-[240px] min-w-[160px] rounded-2xl shadow-xl" />
+        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+          FREE
+        </div>
+      </div>
+      <div class="features flex-1 min-w-[280px]">
+        <div class="section-badge mb-4">
+          <span class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            🎉 Limited Time Offer
+          </span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 leading-tight">
+          Get Access to 
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Unlimited Tests</span>
+          — Absolutely Free!
+        </h2>
+        <p class="text-slate-600 text-lg mb-6">Join thousands of successful candidates with our comprehensive study materials and practice tests.</p>
+        <div class="features-grid grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="feature-item flex items-center gap-3 p-3 bg-white/60 rounded-lg">
+            <div class="feature-icon w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+              <mat-icon class="text-white text-sm">check</mat-icon>
+            </div>
+            <span class="font-semibold text-slate-700">500+ Exams</span>
+          </div>
+          <div class="feature-item flex items-center gap-3 p-3 bg-white/60 rounded-lg">
+            <div class="feature-icon w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center">
+              <mat-icon class="text-white text-sm">quiz</mat-icon>
+            </div>
+            <span class="font-semibold text-slate-700">50,000+ Mock Tests</span>
+          </div>
+          <div class="feature-item flex items-center gap-3 p-3 bg-white/60 rounded-lg">
+            <div class="feature-icon w-8 h-8 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center">
+              <mat-icon class="text-white text-sm">description</mat-icon>
+            </div>
+            <span class="font-semibold text-slate-700">10,000+ Prev Year Papers</span>
+          </div>
+          <div class="feature-item flex items-center gap-3 p-3 bg-white/60 rounded-lg">
+            <div class="feature-icon w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center">
+              <mat-icon class="text-white text-sm">refresh</mat-icon>
+            </div>
+            <span class="font-semibold text-slate-700">Unlimited Reattempts</span>
+          </div>
+        </div>
+        <div class="action-buttons flex flex-col sm:flex-row gap-4">
+          <button mat-raised-button color="primary" class="px-8 py-3 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+            <mat-icon class="mr-2">lock_open</mat-icon>
+            Unlock Free Access
+          </button>
+          <button mat-stroked-button color="primary" class="px-8 py-3 text-lg font-semibold rounded-xl border-2 hover:bg-blue-50 transition-all duration-300">
+            <mat-icon class="mr-2">info</mat-icon>
+            Learn More
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -74,20 +189,48 @@
 
 
   <!-- Testimonials -->
-  <section class="testimonial-section section-card text-center bg-gradient-to-r from-blue-50 to-indigo-100 pb-7 rounded-xl shadow-md mx-[18px] px-6 py-7">
-    <h2 class="section-title text-xl md:text-2xl text-blue-900 mb-6 font-bold">What Our Aspirants Say</h2>
-    <div class="testimonial-slider flex gap-5 overflow-x-auto pb-3 max-w-full scroll-smooth">
+  <section class="testimonial-section section-card text-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 rounded-2xl shadow-lg mx-[18px] px-8 py-10 border border-slate-100">
+    <div class="section-header mb-10">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3">What Our Aspirants Say</h2>
+      <p class="text-slate-600 text-lg">Real success stories from our community</p>
+    </div>
+    <div class="testimonial-slider flex gap-6 overflow-x-auto pb-4 max-w-full scroll-smooth snap-x snap-mandatory">
       <mat-card *ngFor="let testimonial of testimonials; let i = index"
-                class="testimonial-card relative opacity-100 transform-none w-[300px] shrink-0 shadow-md p-6 bg-white rounded-lg text-center"
+                class="testimonial-card relative opacity-100 transform-none w-[320px] shrink-0 shadow-lg p-8 bg-white rounded-2xl text-center snap-center hover:shadow-xl transition-all duration-300"
                 [class.active]="i === currentSlide">
-        <img [src]="testimonial.avatar" alt="User" class="avatar" />
-        <h3>{{ testimonial.name }}</h3>
-        <p class="quote">"{{ testimonial.message }}"</p>
+        <div class="testimonial-content">
+          <div class="quote-icon mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto">
+              <mat-icon class="text-white text-xl">format_quote</mat-icon>
+            </div>
+          </div>
+          <img [src]="testimonial.avatar" alt="User" class="avatar mx-auto mb-4" />
+          <h3 class="text-lg font-bold text-slate-800 mb-2">{{ testimonial.name }}</h3>
+          <div class="stars mb-4">
+            <mat-icon class="text-yellow-400 text-lg">star</mat-icon>
+            <mat-icon class="text-yellow-400 text-lg">star</mat-icon>
+            <mat-icon class="text-yellow-400 text-lg">star</mat-icon>
+            <mat-icon class="text-yellow-400 text-lg">star</mat-icon>
+            <mat-icon class="text-yellow-400 text-lg">star</mat-icon>
+          </div>
+          <p class="quote text-slate-600 leading-relaxed">"{{ testimonial.message }}"</p>
+        </div>
       </mat-card>
     </div>
-    <div class="slider-controls mt-6 flex justify-center gap-2">
-      <button mat-icon-button class="bg-slate-100 text-sky-700 hover:bg-sky-200" (click)="prevSlide()"><mat-icon>chevron_left</mat-icon></button>
-      <button mat-icon-button class="bg-slate-100 text-sky-700 hover:bg-sky-200" (click)="nextSlide()"><mat-icon>chevron_right</mat-icon></button>
+    <div class="slider-controls mt-8 flex justify-center gap-3">
+      <button mat-icon-button class="control-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 shadow-md" (click)="prevSlide()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <div class="dots flex gap-2">
+        <button *ngFor="let testimonial of testimonials; let i = index" 
+                class="dot w-3 h-3 rounded-full transition-all duration-300"
+                [class.active]="i === currentSlide"
+                (click)="currentSlide = i">
+        </button>
+      </div>
+      <button mat-icon-button class="control-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 shadow-md" (click)="nextSlide()">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
     </div>
   </section>
 
